@@ -1,13 +1,16 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import CadastrarImovel from './pages/newAd';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import NewPost from './pages/newAd';
+import List from './pages/list';
 import Home from './pages/home';
 
 const Routes = () => {
   return (
     <Switch>
       <Route component={Home} path='/' exact />
-      <Route component={CadastrarImovel} path='/new_ad' />
+      <Route component={NewPost} path='/new_post' />
+      <Route component={List} path='/list' />
+      <Redirect path='/' to='/' />
     </Switch>
   );
 };

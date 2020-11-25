@@ -1,7 +1,7 @@
 #page-home {
   height: 100vh;
 
-  background: url('../../assets/home-background.svg') no-repeat 900px bottom;
+  background: url('../../assets/home-background.svg') no-repeat 50vw bottom;
   background-size: contain;
 }
 
@@ -85,6 +85,9 @@
 }
 
 @media (max-width: 900px) {
+  #page-home {
+    background: none;
+  }
   #page-home .content {
     align-items: center;
     text-align: center;

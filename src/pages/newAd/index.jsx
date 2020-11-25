@@ -8,13 +8,15 @@ import {
   Popup,
   useMapEvents,
 } from 'react-leaflet';
+import { useDispatch } from 'react-redux';
 
 import './styles.css';
 import logo from '../../assets/logo.svg';
+import { pushData } from '../../services/firebaseService';
 import Axios from 'axios';
 
-const CadastrarImovel = () => {
-  const [position, setPosition] = useState(null);
+const NewPost = () => {
+  const [position, setPosition] = useState([0, 0]);
   const [ufs, setUfs] = useState([]);
   const [cities, setCities] = useState([]);
   const [formData, setFormData] = useState({
@@ -24,13 +26,44 @@ const CadastrarImovel = () => {
     addName: '',
   });
   const [form, setForm] = useState({
+    cep: '',
     street: '',
     neighborhood: '',
     city: '0',
     uf: '0',
+    bedroom: 0,
+    bathroom: 0,
   });
   const qtdBedroom = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const qtdBathroom = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  const dispatch = useDispatch();
+
+  function submitForm(e) {
+    e.preventDefault();
+    const { name, email, whatsapp, addName } = formData;
+    const { street, neighborhood, city, uf, bedroom, bathroom } = form;
+    const [latitude, longitude] = position;
+
+    const data = {
+      name,
+      email,
+      whatsapp,
+      addName,
+      street,
+      neighborhood,
+      city,
+      uf,
+      latitude,
+      longitude,
+      bedroom,
+      bathroom,
+    };
+
+    pushData('post', data);
+    console.log(data);
+    /* dispatch(); */
+  }
 
   useEffect(() => {
     Axios.get(
@@ -46,6 +79,7 @@ const CadastrarImovel = () => {
       `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${form.uf}/municipios`
     ).then((res) => {
       const city = res.data.map((city) => city.nome);
+      console.log(city);
       setCities(city);
     });
   }, [form.uf]);
@@ -69,22 +103,20 @@ const CadastrarImovel = () => {
 
   function onBlurCep(e) {
     const cep = e.target.value?.replace(/[^0-9]/g, '');
-    const { name, value } = e.target;
-    if (cep.length === 0) {
-      setForm({ ...form, [name]: value });
-      return;
-    } else if (cep?.length !== 8) {
-      return;
-    }
 
-    Axios.get(`https://brasilapi.com.br/api/cep/v1/${cep}`)
-      .then((res) => {
-        const { street, neighborhood, city, uf } = res.data;
-        setForm({ ...form, street, neighborhood, city, uf });
-      })
-      .catch((err) => {
-        console.log(err.response.data.message);
-      });
+    const { name, value } = e.target;
+
+    setForm({ ...form, [name]: value });
+
+    cep &&
+      Axios.get(`https://brasilapi.com.br/api/cep/v1/${cep}`)
+        .then((res) => {
+          const { street, neighborhood, city, uf } = res.data;
+          setForm({ ...form, street, neighborhood, city, uf });
+        })
+        .catch((err) => {
+          console.log(err.response.data.message);
+        });
   }
 
   return (
@@ -97,7 +129,7 @@ const CadastrarImovel = () => {
         </Link>
       </header>
 
-      <form>
+      <form onSubmit={submitForm}>
         <h1>Cadastrar novo imóvel</h1>
 
         <fieldset>
@@ -217,8 +249,8 @@ const CadastrarImovel = () => {
             <span>Selecione o endereço abaixo</span>
           </legend>
           <MapContainer
-            center={position ? position : [-25.4723154, -49.2808289]}
-            zoom={16}
+            center={position === [0, 0] ? position : [-25.4723154, -49.2808289]}
+            zoom={5}
             scrollWheelZoom={true}
           >
             <TileLayer
@@ -237,8 +269,13 @@ const CadastrarImovel = () => {
 
         <div className='field-group'>
           <div className='field'>
-            <label htmlFor='quarto'>Quarto</label>
-            <select name='quarto' id='quarto'>
+            <label htmlFor='bedroom'>Quarto</label>
+            <select
+              name='bedroom'
+              id='bedroom'
+              onChange={onBlurCep}
+              value={form.bedroom}
+            >
               <option value='0'>Selecione a quantidade</option>
               {qtdBedroom.map((bedroom) => (
                 <option key={bedroom} value={bedroom}>
@@ -248,8 +285,13 @@ const CadastrarImovel = () => {
             </select>
           </div>
           <div className='field'>
-            <label htmlFor='banheiro'>Banheiro</label>
-            <select name='banheiro' id='banheiro'>
+            <label htmlFor='bathroom'>Banheiro</label>
+            <select
+              name='bathroom'
+              id='bathroom'
+              onChange={onBlurCep}
+              value={form.bathroom}
+            >
               <option value='0'>Selecione a quantidade</option>
               {qtdBathroom.map((bathroom) => (
                 <option key={bathroom} value={bathroom}>
@@ -266,4 +308,4 @@ const CadastrarImovel = () => {
   );
 };
 
-export default CadastrarImovel;
+export default NewPost;

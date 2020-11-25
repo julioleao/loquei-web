@@ -10,9 +10,10 @@ var configDev = {
     appId: "1:840561221049:web:e7a1d3eb30b2f43fcaea68",
     measurementId: "G-57G88PQ3C4"
 };
+var configProd;
 // Initialize Firebase
 
-const config = process.env.NODE_ENV === 'production' ? congigProd : configDev;
+const config = process.env.NODE_ENV === 'production' ? configProd : configDev;
 
 export const firebaseConfig = firebase.initializeApp(config);
 export const firebaseAnalytics = firebase.analytics();

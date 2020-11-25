@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiLogIn } from 'react-icons/fi';
+import { FiSearch } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
 import './styles.css';
@@ -16,11 +16,11 @@ const Home = () => {
           <h1>Aluguel fácil e rápido!</h1>
           <p>Alugue direto com o proprietário e sem burocracia.</p>
 
-          <Link to='/new_ad'>
+          <Link to='/new_post'>
             <span>
-              <FiLogIn />
+              <FiSearch />
             </span>
-            <strong>Cadastre um imóvel</strong>
+            <strong>Busque seu imóvel</strong>
           </Link>
         </main>
       </div>
