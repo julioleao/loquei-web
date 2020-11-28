@@ -61,7 +61,7 @@ const NewPost = () => {
     };
 
     pushData('post', data);
-    console.log(data);
+    //console.log(data);
     /* dispatch(); */
   }
 
@@ -79,7 +79,7 @@ const NewPost = () => {
       `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${form.uf}/municipios`
     ).then((res) => {
       const city = res.data.map((city) => city.nome);
-      console.log(city);
+      //console.log(city);
       setCities(city);
     });
   }, [form.uf]);
@@ -121,14 +121,6 @@ const NewPost = () => {
 
   return (
     <div id='page-cadastrar-imovel'>
-      <header>
-        <img src={logo} alt='Loquei' />
-        <Link to='/'>
-          <FiArrowLeft />
-          Voltar
-        </Link>
-      </header>
-
       <form onSubmit={submitForm}>
         <h1>Cadastrar novo imóvel</h1>
 

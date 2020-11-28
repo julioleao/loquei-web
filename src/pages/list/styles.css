@@ -1,0 +1,154 @@
+#page-map {
+  width: 100vw;
+  height: 92.3vh;
+
+  position: relative;
+  display: flex;
+}
+
+#page-map header {
+  margin: 48px;
+  width: 25vw;
+  position: absolute;
+
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+
+#page-map header a {
+  color: var(--title-color);
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 80px;
+
+  display: flex;
+  align-items: center;
+}
+
+#page-map main p {
+  line-height: 28px;
+  margin-top: 24px;
+}
+
+#page-map main h2 {
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 42px;
+}
+
+#page-map aside {
+  width: 440px;
+  background: linear-gradient(329.54deg, #40ac9b 0%, #4ab3ac 100%);
+  padding: 50px;
+  justify-self: start;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#page-map aside .header {
+  position: absolute;
+
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+
+#page-map footer {
+  display: flex;
+  flex-direction: column;
+
+  line-height: 21px;
+}
+
+#page-map strong {
+  font-weight: 800;
+}
+
+#page-map .leaflet-container {
+  z-index: 5;
+}
+
+#page-map .new-post {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+
+  z-index: 10;
+
+  width: 64px;
+  height: 64px;
+  background: var(--primary-color);
+  border-radius: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: background-color 0.2s;
+}
+
+#page-map .new-post:hover {
+  background: #4ab3ac;
+}
+
+#page-map .map-popup .leaflet-popup-content-wrapper {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+}
+
+#page-map .map-popup .leaflet-popup-content {
+  color: var(--text-color);
+  font-size: 20px;
+  font-weight: bold;
+  margin: 8px, 12px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#page-map .map-popup .leaflet-popup-content a {
+  width: 40px;
+  height: 40px;
+  background: var(--primary-color);
+  box-shadow: 17px 27px 41px rgba(23, 142, 166, 0.16);
+  border-radius: 12px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 1080px) {
+  #page-map aside {
+    display: none;
+  }
+
+  #page-map .header {
+    margin: none;
+    width: 100vw;
+    position: absolute;
+
+    display: flex;
+  }
+
+  #page-map .header header {
+    width: 100vw;
+    position: relative;
+    margin: 50px;
+
+    justify-content: space-between;
+  }
+
+  #page-map .header header a {
+    color: var(--title-color);
+    font-weight: bold;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+  }
+}

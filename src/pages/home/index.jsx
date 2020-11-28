@@ -3,20 +3,17 @@ import { FiSearch } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
 import './styles.css';
-import logo from '../../assets/logo.svg';
+import '../../styles/globalStyles.css';
 
 const Home = () => {
   return (
     <div id='page-home'>
       <div className='content'>
-        <header>
-          <img src={logo} alt='Loquei' />
-        </header>
         <main>
           <h1>Aluguel fácil e rápido!</h1>
           <p>Alugue direto com o proprietário e sem burocracia.</p>
 
-          <Link to='/new_post'>
+          <Link to='/list'>
             <span>
               <FiSearch />
             </span>
