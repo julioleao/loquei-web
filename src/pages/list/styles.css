@@ -59,6 +59,7 @@
 #page-map footer {
   display: flex;
   flex-direction: column;
+  color: var(--text-color);
 
   line-height: 21px;
 }

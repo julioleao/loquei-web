@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiArrowLeft } from 'react-icons/fi';
+import { FiArrowLeft, FiPlus } from 'react-icons/fi';
 import {
   MapContainer,
   TileLayer,
@@ -128,112 +128,111 @@ const NewPost = () => {
           <legend>
             <h2>Dados para contato</h2>
           </legend>
-        </fieldset>
 
-        <div className='field'>
-          <label htmlFor='name'>Nome</label>
-          <input
-            type='text'
-            name='name'
-            id='name'
-            onChange={handleInputChange}
-          />
-        </div>
-
-        <div className='field-group'>
           <div className='field'>
-            <label htmlFor='email'>E-mail</label>
-            <input
-              type='email'
-              name='email'
-              id='email'
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className='field'>
-            <label htmlFor='whatsapp'>WhatsApp</label>
+            <label htmlFor='name'>Nome</label>
             <input
               type='text'
-              name='whatsapp'
-              id='whatsapp'
+              name='name'
+              id='name'
               onChange={handleInputChange}
             />
           </div>
-        </div>
 
+          <div className='field-group'>
+            <div className='field'>
+              <label htmlFor='email'>E-mail</label>
+              <input
+                type='email'
+                name='email'
+                id='email'
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className='field'>
+              <label htmlFor='whatsapp'>WhatsApp</label>
+              <input
+                type='text'
+                name='whatsapp'
+                id='whatsapp'
+                onChange={handleInputChange}
+              />
+            </div>
+          </div>
+        </fieldset>
         <fieldset>
           <legend>
             <h2>Local do imóvel</h2>
           </legend>
+
+          <div className='field'>
+            <label htmlFor='addName'>Título do anúncio</label>
+            <input
+              type='text'
+              name='addName'
+              id='addName'
+              onChange={handleInputChange}
+              value={formData.addName}
+            />
+          </div>
+
+          <div className='field'>
+            <label htmlFor='cep'>Informe o CEP</label>
+            <input type='text' name='cep' id='cep' onBlur={onBlurCep} />
+          </div>
+
+          <div className='field-group'>
+            <div className='field'>
+              <label htmlFor='street'>Rua</label>
+              <input
+                type='text'
+                name='street'
+                id='street'
+                onChange={onBlurCep}
+                value={form.street}
+              />
+            </div>
+            <div className='field'>
+              <label htmlFor='neighborhood'>Bairro</label>
+              <input
+                type='text'
+                name='neighborhood'
+                id='neighborhood'
+                onChange={onBlurCep}
+                value={form.neighborhood}
+              />
+            </div>
+          </div>
+          <div className='field-group'>
+            <div className='field'>
+              <label htmlFor='uf'>Estado</label>
+              <select name='uf' id='uf' value={form.uf} onChange={onBlurCep}>
+                <option value='0'>Selecione o estado</option>
+                {ufs.map((uf) => (
+                  <option key={uf} value={uf}>
+                    {uf}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className='field'>
+              <label htmlFor='city'>Cidade</label>
+              <select
+                name='city'
+                id='city'
+                value={form.city}
+                onChange={onBlurCep}
+              >
+                <option value='0'>Selecione o cidade</option>
+                {cities.map((city) => (
+                  <option key={city} value={city}>
+                    {city}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
         </fieldset>
-
-        <div className='field'>
-          <label htmlFor='addName'>Título do anúncio</label>
-          <input
-            type='text'
-            name='addName'
-            id='addName'
-            onChange={handleInputChange}
-            value={formData.addName}
-          />
-        </div>
-
-        <div className='field'>
-          <label htmlFor='cep'>Informe o CEP</label>
-          <input type='text' name='cep' id='cep' onBlur={onBlurCep} />
-        </div>
-
-        <div className='field-group'>
-          <div className='field'>
-            <label htmlFor='street'>Rua</label>
-            <input
-              type='text'
-              name='street'
-              id='street'
-              onChange={onBlurCep}
-              value={form.street}
-            />
-          </div>
-          <div className='field'>
-            <label htmlFor='neighborhood'>Bairro</label>
-            <input
-              type='text'
-              name='neighborhood'
-              id='neighborhood'
-              onChange={onBlurCep}
-              value={form.neighborhood}
-            />
-          </div>
-        </div>
-        <div className='field-group'>
-          <div className='field'>
-            <label htmlFor='uf'>Estado</label>
-            <select name='uf' id='uf' value={form.uf} onChange={onBlurCep}>
-              <option value='0'>Selecione o estado</option>
-              {ufs.map((uf) => (
-                <option key={uf} value={uf}>
-                  {uf}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className='field'>
-            <label htmlFor='city'>Cidade</label>
-            <select
-              name='city'
-              id='city'
-              value={form.city}
-              onChange={onBlurCep}
-            >
-              <option value='0'>Selecione o cidade</option>
-              {cities.map((city) => (
-                <option key={city} value={city}>
-                  {city}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
 
         <fieldset>
           <legend>
@@ -257,43 +256,59 @@ const NewPost = () => {
           <legend>
             <h2>Dados do imóvel</h2>
           </legend>
+
+          <div className='field'>
+            <label htmlFor='about'>
+              Sobre <span>Máximo de 300 caracteres</span>
+            </label>
+            <textarea id='name' maxLength={300} />
+          </div>
+
+          <div className='field'>
+            <label htmlFor='images'>Fotos</label>
+
+            <div className='uploaded-image'></div>
+
+            <button className='new-image'>
+              <FiPlus size={24} color='#4abdac' />
+            </button>
+          </div>
+
+          <div className='field-group'>
+            <div className='field'>
+              <label htmlFor='bedroom'>Quarto</label>
+              <select
+                name='bedroom'
+                id='bedroom'
+                onChange={onBlurCep}
+                value={form.bedroom}
+              >
+                <option value='0'>Selecione a quantidade</option>
+                {qtdBedroom.map((bedroom) => (
+                  <option key={bedroom} value={bedroom}>
+                    {bedroom}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className='field'>
+              <label htmlFor='bathroom'>Banheiro</label>
+              <select
+                name='bathroom'
+                id='bathroom'
+                onChange={onBlurCep}
+                value={form.bathroom}
+              >
+                <option value='0'>Selecione a quantidade</option>
+                {qtdBathroom.map((bathroom) => (
+                  <option key={bathroom} value={bathroom}>
+                    {bathroom}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
         </fieldset>
-
-        <div className='field-group'>
-          <div className='field'>
-            <label htmlFor='bedroom'>Quarto</label>
-            <select
-              name='bedroom'
-              id='bedroom'
-              onChange={onBlurCep}
-              value={form.bedroom}
-            >
-              <option value='0'>Selecione a quantidade</option>
-              {qtdBedroom.map((bedroom) => (
-                <option key={bedroom} value={bedroom}>
-                  {bedroom}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className='field'>
-            <label htmlFor='bathroom'>Banheiro</label>
-            <select
-              name='bathroom'
-              id='bathroom'
-              onChange={onBlurCep}
-              value={form.bathroom}
-            >
-              <option value='0'>Selecione a quantidade</option>
-              {qtdBathroom.map((bathroom) => (
-                <option key={bathroom} value={bathroom}>
-                  {bathroom}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
         <button type='submit'>Cadastrar imóvel</button>
       </form>
     </div>

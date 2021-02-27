@@ -26,7 +26,7 @@ function Header() {
             Mapa
           </Nav.Link>
 
-          <Nav.Link as={Link} to='/new_post'>
+          <Nav.Link as={Link} to='/create'>
             Divulgar
           </Nav.Link>
           <NavDropdown title='Alugar' id='basic-nav-dropdown'>

@@ -48,14 +48,14 @@ const List = () => {
         <Marker position={[-25.4723154, -49.2808289]}>
           <Popup closeButton={false} className='map-popup'>
             You are here
-            <Link to=''>
+            <Link to='/detail/1'>
               <FiArrowRight size={20} color='#FFF' />
             </Link>
           </Popup>
         </Marker>
       </MapContainer>
 
-      <Link to='/new_post' className='new-post'>
+      <Link to='/create' className='new-post'>
         <FiPlus size={32} color='#FFF' />
       </Link>
     </div>
