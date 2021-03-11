@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiArrowLeft, FiPlus } from 'react-icons/fi';
+import { FiPlus } from 'react-icons/fi';
 import {
   MapContainer,
   TileLayer,
@@ -11,7 +11,6 @@ import {
 import { useDispatch } from 'react-redux';
 
 import './styles.css';
-import logo from '../../assets/logo.svg';
 import { pushData } from '../../services/firebaseService';
 import Axios from 'axios';
 

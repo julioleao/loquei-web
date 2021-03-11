@@ -1,7 +1,8 @@
 import React from 'react';
-import { Tabs, Tab } from 'react-bootstrap';
+import { Tabs, Tab, Card } from 'react-bootstrap';
 
 import Map from '../../components/map';
+import Cards from '../../components/cards';
 
 import '../../styles/globalStyles.css';
 import './styles.css';
@@ -26,7 +27,7 @@ const List = () => {
             <Map />
           </Tab>
           <Tab eventKey='cards' title='Lista'>
-            <h1>Cards</h1>
+            <Cards />
           </Tab>
         </Tabs>
       </div>
