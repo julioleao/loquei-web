@@ -43,7 +43,7 @@ function Header() {
             placeholder='Buscar...'
             className='mr-sm-2'
           />
-          <Button variant='outline-success'>Buscar</Button>
+          <Button variant='outline-danger'>Buscar</Button>
         </Form>
       </Navbar.Collapse>
     </Navbar>

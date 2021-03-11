@@ -12,7 +12,7 @@ export default createReducer(INITIAL_STATE, {
     [login.type]: (state, action) => ({
         ...state,
         user: action.payload,
-        isAuthenticated: true
+        isAuthenticated: localStorage.getItem('token')
     }),
     [logout.type]: (state, action) => ({
         ...state,

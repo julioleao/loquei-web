@@ -1,29 +1,9 @@
 #page-map {
   width: 100vw;
-  height: 92.3vh;
+  height: 92.2vh;
 
   position: relative;
   display: flex;
-}
-
-#page-map header {
-  margin: 48px;
-  width: 25vw;
-  position: absolute;
-
-  justify-content: flex-start;
-  align-items: center;
-  display: flex;
-}
-
-#page-map header a {
-  color: var(--title-color);
-  font-weight: bold;
-  text-decoration: none;
-  margin-left: 80px;
-
-  display: flex;
-  align-items: center;
 }
 
 #page-map main p {
@@ -38,7 +18,8 @@
 }
 
 #page-map aside {
-  width: 440px;
+  width: 25vw;
+  height: 92.2vh;
   background: linear-gradient(329.54deg, #40ac9b 0%, #4ab3ac 100%);
   padding: 50px;
   justify-self: start;
@@ -102,7 +83,7 @@
 
 #page-map .map-popup .leaflet-popup-content {
   color: var(--text-color);
-  font-size: 20px;
+  font-size: 15px;
   font-weight: bold;
   margin: 8px, 12px;
 
@@ -112,8 +93,8 @@
 }
 
 #page-map .map-popup .leaflet-popup-content a {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   background: var(--primary-color);
   box-shadow: 17px 27px 41px rgba(23, 142, 166, 0.16);
   border-radius: 12px;
