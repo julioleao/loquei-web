@@ -7,6 +7,8 @@ import List from './pages/list';
 import Home from './pages/home';
 import Detail from './pages/postDetail';
 import Login from './pages/login';
+import Register from './pages/register';
+import Forgot from './pages/forgot';
 
 function PrivateRoute({ component: Component, ...rest }) {
   const { isAuthenticated } = useSelector((state) => state.auth);
@@ -34,6 +36,8 @@ const Routes = () => {
       <Route component={Detail} path='/detail/:id' />
       <PrivateRoute component={NewPost} path='/create' />
       <Route component={Login} path='/login' />
+      <Route component={Forgot} path='/forgot' />
+      <Route component={Register} path='/register' />
       <Route component={List} path='/list' />
       <Redirect path='/' to='/' />
     </Switch>

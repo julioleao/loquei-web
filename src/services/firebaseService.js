@@ -53,7 +53,11 @@ export const updateData = (id, node, obj) => {
 };
 
 export const createUser = (email, password) => {
-    return firebaseAuth.createUserWithEmailAndPassword(email, password);
+    firebaseAuth.createUserWithEmailAndPassword(email, password).then(
+        console.log(firebaseAuth.currentUser)
+    ).catch(
+        console.log('erro')
+    );
 };
 
 export const login = (email, password) => {

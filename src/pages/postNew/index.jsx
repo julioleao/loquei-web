@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux';
 import './styles.css';
 import { pushData } from '../../services/firebaseService';
 import Axios from 'axios';
+import { Container } from 'react-bootstrap';
 
 const NewPost = () => {
   const [position, setPosition] = useState([0, 0]);
@@ -22,7 +23,7 @@ const NewPost = () => {
     name: '',
     email: '',
     whatsapp: '',
-    addName: '',
+    title: '',
   });
   const [form, setForm] = useState({
     cep: '',
@@ -40,7 +41,7 @@ const NewPost = () => {
 
   function submitForm(e) {
     e.preventDefault();
-    const { name, email, whatsapp, addName } = formData;
+    const { name, email, whatsapp, title } = formData;
     const { street, neighborhood, city, uf, bedroom, bathroom } = form;
     const [latitude, longitude] = position;
 
@@ -48,7 +49,7 @@ const NewPost = () => {
       name,
       email,
       whatsapp,
-      addName,
+      title,
       street,
       neighborhood,
       city,
@@ -59,7 +60,8 @@ const NewPost = () => {
       bathroom,
     };
 
-    pushData('post', data);
+    //console.log(pushData('post', data));
+
     //console.log(data);
     /* dispatch(); */
   }
@@ -119,7 +121,14 @@ const NewPost = () => {
   }
 
   return (
-    <div id='page-cadastrar-imovel'>
+    <Container
+      fluid
+      id='page-new-post'
+      style={{
+        justifyContent: 'center',
+        display: 'flex',
+      }}
+    >
       <form onSubmit={submitForm}>
         <h1>Cadastrar novo imóvel</h1>
 
@@ -161,17 +170,17 @@ const NewPost = () => {
         </fieldset>
         <fieldset>
           <legend>
-            <h2>Local do imóvel</h2>
+            <h2>Endereço</h2>
           </legend>
 
           <div className='field'>
-            <label htmlFor='addName'>Título do anúncio</label>
+            <label htmlFor='title'>Título do anúncio</label>
             <input
               type='text'
-              name='addName'
-              id='addName'
+              name='title'
+              id='title'
               onChange={handleInputChange}
-              value={formData.addName}
+              value={formData.title}
             />
           </div>
 
@@ -235,8 +244,8 @@ const NewPost = () => {
 
         <fieldset>
           <legend>
-            <h2>Endereço</h2>
-            <span>Selecione o endereço abaixo</span>
+            <h2>Local do imóvel</h2>
+            <span>Selecione o local no mapa</span>
           </legend>
           <MapContainer
             center={position === [0, 0] ? position : [-25.4723154, -49.2808289]}
@@ -310,7 +319,7 @@ const NewPost = () => {
         </fieldset>
         <button type='submit'>Cadastrar imóvel</button>
       </form>
-    </div>
+    </Container>
   );
 };
 

@@ -1,7 +1,9 @@
 import { createAction, createReducer } from '@reduxjs/toolkit';
 
 const INITIAL_STATE = {
-    isAuthenticated: /* localStorage.getItem('token') */ false
+    isAuthenticated: localStorage.getItem('token'),
+    name: localStorage.getItem('name'),
+    email: localStorage.getItem('email'),
 };
 
 export const login = createAction('LOGIN');
@@ -12,7 +14,9 @@ export default createReducer(INITIAL_STATE, {
     [login.type]: (state, action) => ({
         ...state,
         user: action.payload,
-        isAuthenticated: localStorage.getItem('token')
+        isAuthenticated: localStorage.getItem('token'),
+        name: localStorage.getItem('name'),
+        email: localStorage.getItem('email')
     }),
     [logout.type]: (state, action) => ({
         ...state,

@@ -1,6 +1,6 @@
 #page-map {
-  width: 100vw;
-  height: 92.2vh;
+  width: 100%;
+  height: 100%;
 
   position: relative;
   display: flex;
@@ -18,8 +18,7 @@
 }
 
 #page-map aside {
-  width: 25vw;
-  height: 92.2vh;
+  height: 100%;
   background: linear-gradient(329.54deg, #40ac9b 0%, #4ab3ac 100%);
   padding: 50px;
   justify-self: start;
@@ -105,6 +104,9 @@
 }
 
 @media (max-width: 1080px) {
+  #page-map .tab {
+    width: 100%;
+  }
   #page-map aside {
     display: none;
   }

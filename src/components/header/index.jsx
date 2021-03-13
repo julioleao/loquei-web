@@ -6,14 +6,45 @@ import {
   Form,
   FormControl,
   Button,
+  OverlayTrigger,
+  Tooltip,
+  Image,
+  Popover,
 } from 'react-bootstrap';
+import { FiLogIn, FiLogOut, FiUser } from 'react-icons/fi';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
+import logoutService from '../../services/logoutService';
 import logo from '../../assets/logo.svg';
+import user from '../../assets/user-placeholder.svg';
+import './styles.css';
 
 function Header() {
+  const { isAuthenticated, name, email } = useSelector((state) => state.auth);
+
+  const popover = (
+    <Popover id='popover-basic'>
+      <Popover.Title as='h3'>{email}</Popover.Title>
+      <Popover.Content>
+        <NavLink to='/login' activeClassName='active'>
+          <Button variant='outline-info' onClick={authLogoutButton}>
+            Logout
+            <FiLogIn size={15} style={{ marginLeft: '6px' }} />
+          </Button>
+        </NavLink>
+      </Popover.Content>
+    </Popover>
+  );
+
+  const dispatch = useDispatch();
+
+  function authLogoutButton() {
+    isAuthenticated && dispatch(logoutService());
+  }
   return (
-    <Navbar bg='light' expand='lg'>
+    <Navbar bg='light' expand='lg' variant='light'>
       <Navbar.Brand>
         <Link to='/'>
           <img src={logo} alt='Loquei' />
@@ -38,12 +69,37 @@ function Header() {
           </NavDropdown>
         </Nav>
         <Form inline>
-          <FormControl
-            type='text'
-            placeholder='Buscar...'
-            className='mr-sm-2'
-          />
-          <Button variant='outline-danger'>Buscar</Button>
+          <FormControl type='text' placeholder='Busca...' className='mr-sm-2' />
+          <Button variant='outline-danger' style={{ marginRight: '8px' }}>
+            Buscar
+          </Button>
+          {isAuthenticated ? (
+            <OverlayTrigger
+              trigger='click'
+              placement='bottom'
+              overlay={popover}
+            >
+              <Button
+                variant='light'
+                className='d-inline-flex align-items-center'
+                style={{ marginLeft: '10px' }}
+              >
+                <Image
+                  roundedCircle
+                  src='https://upload.wikimedia.org/wikipedia/commons/2/24/Missing_avatar.svg'
+                  style={{ width: '30px', height: '30px' }}
+                />
+                <span className='ml-1'>{name}</span>
+              </Button>
+            </OverlayTrigger>
+          ) : (
+            <NavLink to='/login' activeClassName='active'>
+              <Button variant='outline-info'>
+                Login
+                <FiUser size={15} style={{ marginLeft: '6px' }} />
+              </Button>
+            </NavLink>
+          )}
         </Form>
       </Navbar.Collapse>
     </Navbar>

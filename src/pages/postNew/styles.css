@@ -1,12 +1,4 @@
-#page-cadastrar-imovel {
-  width: 100vw;
-  height: 100vh;
-  max-width: 1100px;
-
-  margin: 0 auto;
-}
-
-#page-cadastrar-imovel header {
+#page-new-post header {
   position: relative;
 
   display: flex;
@@ -14,7 +6,7 @@
   align-items: center;
 }
 
-#page-cadastrar-imovel header a {
+#page-new-post header a {
   color: var(--title-color);
   font-weight: bold;
   text-decoration: none;
@@ -23,10 +15,11 @@
   align-items: center;
 }
 
-#page-cadastrar-imovel form {
-  margin: auto auto;
+#page-new-post form {
+  margin-block: 50px;
+  width: 100vw;
   padding: 64px;
-  max-width: 850px;
+  max-width: 1100px;
   background: #fff;
   border-radius: 8px;
 
@@ -34,7 +27,7 @@
   flex-direction: column;
 }
 
-form #page-cadastrar-imovel .field .new-image {
+form #page-new-post .field .new-image {
   width: 100%;
   height: 64px;
   background: #f5f8fa;
@@ -43,17 +36,17 @@ form #page-cadastrar-imovel .field .new-image {
   cursor: pointer;
 }
 
-#page-cadastrar-imovel form h1 {
+#page-new-post form h1 {
   font-size: 36px;
 }
 
-#page-cadastrar-imovel form fieldset {
+#page-new-post form fieldset {
   margin-top: 64px;
   min-inline-size: auto;
   border: 0;
 }
 
-#page-cadastrar-imovel form legend {
+#page-new-post form legend {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -63,24 +56,24 @@ form #page-cadastrar-imovel .field .new-image {
   border-bottom: 1px solid #d3e2e5;
 }
 
-#page-cadastrar-imovel form legend h2 {
+#page-new-post form legend h2 {
   font-size: 24px;
 }
 
-#page-cadastrar-imovel form legend span {
+#page-new-post form legend span {
   font-size: 14px;
   font-weight: normal;
   color: var(--text-color);
 }
 
-#page-cadastrar-imovel form label span {
+#page-new-post form label span {
   font-size: 12px;
   margin-left: 24px;
   font-weight: normal;
   color: var(--text-color);
 }
 
-#page-cadastrar-imovel form .field .new-image {
+#page-new-post form .field .new-image {
   width: 100%;
   height: 64px;
   background: #f5f8fa;
@@ -89,12 +82,12 @@ form #page-cadastrar-imovel .field .new-image {
   cursor: pointer;
 }
 
-#page-cadastrar-imovel form .field-group {
+#page-new-post form .field-group {
   flex: 1;
   display: flex;
 }
 
-#page-cadastrar-imovel form .field {
+#page-new-post form .field {
   flex: 1;
 
   display: flex;
@@ -102,10 +95,10 @@ form #page-cadastrar-imovel .field .new-image {
   margin-bottom: 24px;
 }
 
-#page-cadastrar-imovel form .field input[type='text'],
-#page-cadastrar-imovel form .field textarea,
-#page-cadastrar-imovel form .field input[type='email'],
-#page-cadastrar-imovel form .field input[type='number'] {
+#page-new-post form .field input[type='text'],
+#page-new-post form .field textarea,
+#page-new-post form .field input[type='email'],
+#page-new-post form .field input[type='number'] {
   flex: 1;
   background: #f0f0f5;
   border-radius: 8px;
@@ -115,7 +108,7 @@ form #page-cadastrar-imovel .field .new-image {
   color: #6c6c80;
 }
 
-#page-cadastrar-imovel form .field select {
+#page-new-post form .field select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -128,49 +121,49 @@ form #page-cadastrar-imovel .field .new-image {
   color: #6c6c80;
 }
 
-#page-cadastrar-imovel form .field input::placeholder {
+#page-new-post form .field input::placeholder {
   color: #a0a0b2;
 }
 
-#page-cadastrar-imovel form .field label {
+#page-new-post form .field label {
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 8px;
 }
 
-#page-cadastrar-imovel form .field :disabled {
+#page-new-post form .field :disabled {
   cursor: not-allowed;
 }
 
-#page-cadastrar-imovel form .field-group .field + .field {
+#page-new-post form .field-group .field + .field {
   margin-left: 24px;
 }
 
-#page-cadastrar-imovel form .field-group input + input {
+#page-new-post form .field-group input + input {
   margin-left: 24px;
 }
 
-#page-cadastrar-imovel form .field-check {
+#page-new-post form .field-check {
   flex-direction: row;
   align-items: center;
 }
 
-#page-cadastrar-imovel form .field-check input[type='checkbox'] {
+#page-new-post form .field-check input[type='checkbox'] {
   background: #f0f0f5;
 }
 
-#page-cadastrar-imovel form .field-check label {
+#page-new-post form .field-check label {
   margin: 0 0 0 8px;
 }
 
-#page-cadastrar-imovel form .leaflet-container {
+#page-new-post form .leaflet-container {
   width: 100%;
   height: 350px;
   border-radius: 8px;
   margin-bottom: 24px;
 }
 
-#page-cadastrar-imovel form button {
+#page-new-post form button {
   width: 260px;
   height: 56px;
   background: var(--primary-color);
@@ -185,7 +178,7 @@ form #page-cadastrar-imovel .field .new-image {
   cursor: pointer;
 }
 
-#page-cadastrar-imovel form button:hover {
+#page-new-post form button:hover {
   background: #4ab3acff;
 }
 
@@ -228,7 +221,7 @@ form #page-cadastrar-imovel .field .new-image {
 }
 
 @media (max-width: 700px) {
-  #page-cadastrar-imovel {
+  #page-new-post {
     height: fit-content;
     max-width: fit-content;
     display: flex;
@@ -236,7 +229,7 @@ form #page-cadastrar-imovel .field .new-image {
     justify-content: center;
   }
 
-  #page-cadastrar-imovel form {
+  #page-new-post form {
     width: fit-content;
 
     margin: 0px;
@@ -247,16 +240,16 @@ form #page-cadastrar-imovel .field .new-image {
     flex-direction: column;
   }
 
-  #page-cadastrar-imovel form fieldset {
+  #page-new-post form fieldset {
     min-inline-size: 100%;
   }
 
-  #page-cadastrar-imovel form h1 {
+  #page-new-post form h1 {
     font-size: 38px;
     text-align: center;
   }
 
-  #page-cadastrar-imovel form .field-group {
+  #page-new-post form .field-group {
     flex: 1;
     display: flex;
     width: fit-content;
@@ -266,15 +259,15 @@ form #page-cadastrar-imovel .field .new-image {
     align-items: center;
   }
 
-  #page-cadastrar-imovel form .field-group .field + .field {
+  #page-new-post form .field-group .field + .field {
     margin-left: 0px;
   }
 
-  #page-cadastrar-imovel form .field-group input + input {
+  #page-new-post form .field-group input + input {
     margin-left: 0px;
   }
 
-  #page-cadastrar-imovel form legend {
+  #page-new-post form legend {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -283,7 +276,7 @@ form #page-cadastrar-imovel .field .new-image {
     margin-bottom: 40px;
   }
 
-  #page-cadastrar-imovel form button {
+  #page-new-post form button {
     align-self: center;
   }
 }

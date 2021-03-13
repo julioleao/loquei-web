@@ -14,12 +14,12 @@ const mapIcon = Leaflet.icon({
 
 const Map = () => {
   return (
-    <div>
+    <div style={{ width: '100%', height: '87.5vh' }}>
       <MapContainer
         center={[-25.4723154, -49.2808289]}
         zoom={15}
         scrollWheelZoom={true}
-        style={{ width: '75vw', height: '87.5vh' }}
+        style={{ width: '100%', height: '87.5vh' }}
       >
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
