@@ -24,6 +24,9 @@ export default createReducer(INITIAL_STATE, {
     }),
     [register.type]: (state, action) => ({
         ...state,
-        isAuthenticated: true
+        user: action.payload,
+        isAuthenticated: localStorage.getItem('token'),
+        name: localStorage.getItem('name'),
+        email: localStorage.getItem('email')
     })
 });

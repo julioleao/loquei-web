@@ -5,6 +5,8 @@ import Leaflet from 'leaflet';
 import { Link } from 'react-router-dom';
 
 import pinHome from '../../assets/pinHome.svg';
+import MarkerMap from '../markerMap';
+import { post } from '../../utils/db.json';
 
 const mapIcon = Leaflet.icon({
   iconUrl: pinHome,
@@ -12,7 +14,13 @@ const mapIcon = Leaflet.icon({
   iconAnchor: [15, 15],
 });
 
-const Map = () => {
+export const tileTheme = {
+  attribution:
+    '<a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  url: `https://tile.jawg.io/jawg-sunny/{z}/{x}/{y}.png?access-token=${process.env.REACT_APP_MAP_THEME_TOKEN}`,
+};
+
+const Map = (props) => {
   return (
     <div style={{ width: '100%', height: '87.5vh' }}>
       <MapContainer
@@ -21,19 +29,21 @@ const Map = () => {
         scrollWheelZoom={true}
         style={{ width: '100%', height: '87.5vh' }}
       >
-        <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-        />
+        <TileLayer attribution={tileTheme.attribution} url={tileTheme.url} />
 
-        <Marker position={[-25.4723154, -49.2808289]} icon={mapIcon}>
+        {post.map((post, index) => (
+          <MarkerMap key={index} marker={post} />
+        ))}
+
+        {/*  <Marker position={[lat, lon]} icon={mapIcon}>
           <Popup closeButton={false} className='map-popup'>
-            You are here
+            {title}
+            <img src={picture} />
             <Link to='/detail/1'>
               <FiArrowRight size={20} color='#FFF' />
             </Link>
           </Popup>
-        </Marker>
+        </Marker> */}
       </MapContainer>
 
       <Link to='/create' className='new-post'>

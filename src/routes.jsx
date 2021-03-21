@@ -6,9 +6,9 @@ import NewPost from './pages/postNew';
 import List from './pages/list';
 import Home from './pages/home';
 import Detail from './pages/postDetail';
-import Login from './pages/login';
-import Register from './pages/register';
 import Forgot from './pages/forgot';
+import Auth from './pages/auth';
+import Profile from './pages/profile';
 
 function PrivateRoute({ component: Component, ...rest }) {
   const { isAuthenticated } = useSelector((state) => state.auth);
@@ -20,7 +20,7 @@ function PrivateRoute({ component: Component, ...rest }) {
           <Component {...props} />
         ) : (
           <Redirect
-            to={{ pathname: '/login', state: { from: props.location } }}
+            to={{ pathname: '/auth', state: { from: props.location } }}
           />
         )
       }
@@ -31,13 +31,13 @@ function PrivateRoute({ component: Component, ...rest }) {
 const Routes = () => {
   return (
     <Switch>
-      <Route component={Home} path='/' exact />
-
-      <Route component={Detail} path='/detail/:id' />
       <PrivateRoute component={NewPost} path='/create' />
-      <Route component={Login} path='/login' />
+      <PrivateRoute component={Profile} path='/profile' />
+
+      <Route component={Home} path='/' exact />
+      <Route component={Detail} path='/detail/:id' />
+      <Route component={Auth} path='/auth' />
       <Route component={Forgot} path='/forgot' />
-      <Route component={Register} path='/register' />
       <Route component={List} path='/list' />
       <Redirect path='/' to='/' />
     </Switch>

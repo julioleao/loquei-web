@@ -8,12 +8,16 @@ import {
   Popup,
   useMapEvents,
 } from 'react-leaflet';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import './styles.css';
 import { pushData } from '../../services/firebaseService';
 import Axios from 'axios';
 import { Container } from 'react-bootstrap';
+import { addPosts, getCep } from '../../store/ducks/post';
+import { searchCep } from '../../store/actions/postActions';
+import { tileTheme } from '../../components/map';
+import { mapIcon } from '../../components/markerMap';
 
 const NewPost = () => {
   const [position, setPosition] = useState([0, 0]);
@@ -39,7 +43,7 @@ const NewPost = () => {
 
   const dispatch = useDispatch();
 
-  function submitForm(e) {
+  const submitForm = (e) => {
     e.preventDefault();
     const { name, email, whatsapp, title } = formData;
     const { street, neighborhood, city, uf, bedroom, bathroom } = form;
@@ -64,7 +68,7 @@ const NewPost = () => {
 
     //console.log(data);
     /* dispatch(); */
-  }
+  };
 
   useEffect(() => {
     Axios.get(
@@ -85,40 +89,37 @@ const NewPost = () => {
     });
   }, [form.uf]);
 
-  function LocationMarker() {
+  const LocationMarker = () => {
     useMapEvents({
       click(e) {
         setPosition([e.latlng.lat, e.latlng.lng]);
       },
     });
     return position === null ? null : (
-      <Marker position={position}>
-        <Popup>You are here</Popup>
+      <Marker position={position} icon={mapIcon}>
+        <Popup>Seu imóvel está aqui</Popup>
       </Marker>
     );
-  }
-  function handleInputChange(e) {
+  };
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-  }
+  };
 
-  function onBlurCep(e) {
+  const item = useSelector((state) => state.post);
+
+  const onBlurCep = (e) => {
     const cep = e.target.value?.replace(/[^0-9]/g, '');
 
+    console.log(cep.length);
+    console.log(item);
+    dispatch(searchCep(cep));
     const { name, value } = e.target;
 
     setForm({ ...form, [name]: value });
 
-    cep &&
-      Axios.get(`https://brasilapi.com.br/api/cep/v1/${cep}`)
-        .then((res) => {
-          const { street, neighborhood, city, uf } = res.data;
-          setForm({ ...form, street, neighborhood, city, uf });
-        })
-        .catch((err) => {
-          console.log(err.response.data.message);
-        });
-  }
+    //cep && setForm({ ...form, street, neighborhood, city, uf });
+  };
 
   return (
     <Container
@@ -253,8 +254,8 @@ const NewPost = () => {
             scrollWheelZoom={true}
           >
             <TileLayer
-              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+              attribution={tileTheme.attribution}
+              url={tileTheme.url}
             />
             <LocationMarker />
           </MapContainer>
@@ -267,9 +268,9 @@ const NewPost = () => {
 
           <div className='field'>
             <label htmlFor='about'>
-              Sobre <span>Máximo de 300 caracteres</span>
+              Sobre <span>Mínimo de 100 caracteres</span>
             </label>
-            <textarea id='name' maxLength={300} />
+            <textarea id='name' minLength={100} />
           </div>
 
           <div className='field'>

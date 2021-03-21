@@ -10,10 +10,12 @@ import {
   Tooltip,
   Image,
   Popover,
+  Col,
+  Row,
 } from 'react-bootstrap';
 import { FiLogIn, FiLogOut, FiUser } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import logoutService from '../../services/logoutService';
@@ -23,18 +25,40 @@ import './styles.css';
 
 function Header() {
   const { isAuthenticated, name, email } = useSelector((state) => state.auth);
-
+  const history = useHistory();
+  const login = () => {
+    let path = `/auth`;
+    history.push(path);
+  };
+  const register = () => {
+    let path = `/auth`;
+    history.push(path);
+  };
   const popover = (
     <Popover id='popover-basic'>
-      <Popover.Title as='h3'>{email}</Popover.Title>
-      <Popover.Content>
-        <NavLink to='/login' activeClassName='active'>
-          <Button variant='outline-info' onClick={authLogoutButton}>
-            Logout
-            <FiLogIn size={15} style={{ marginLeft: '6px' }} />
-          </Button>
-        </NavLink>
-      </Popover.Content>
+      <Popover.Title
+        as='h3'
+        style={{ justifyContent: 'center', display: 'flex' }}
+      >
+        {email}
+      </Popover.Title>
+      <Col>
+        <Popover.Content>
+          <Row style={{ paddingBottom: '8px' }}>
+            <NavLink to='/profile' activeClassName='active'>
+              <span>Meus anúncios</span>
+            </NavLink>
+          </Row>
+          <Row>
+            <NavLink to='/login' activeClassName='active'>
+              <Button variant='outline-info' onClick={authLogoutButton}>
+                Logout
+                <FiLogIn size={15} />
+              </Button>
+            </NavLink>
+          </Row>
+        </Popover.Content>
+      </Col>
     </Popover>
   );
 
@@ -93,12 +117,12 @@ function Header() {
               </Button>
             </OverlayTrigger>
           ) : (
-            <NavLink to='/login' activeClassName='active'>
-              <Button variant='outline-info'>
+            <div>
+              <Button variant='outline-info' onClick={login}>
                 Login
-                <FiUser size={15} style={{ marginLeft: '6px' }} />
+                <FiLogIn size={15} style={{ marginLeft: '6px' }} />
               </Button>
-            </NavLink>
+            </div>
           )}
         </Form>
       </Navbar.Collapse>

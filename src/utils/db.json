@@ -1,0 +1,294 @@
+{
+    "post": [
+        {
+            "_id": "6051276ba8b276f1ed14818b",
+            "title": "proident esse aliqua",
+            "description": "Aute ut excepteur sunt mollit nostrud consectetur est tempor reprehenderit reprehenderit sit ex pariatur minim.",
+            "price": "602.21",
+            "iptu": "97.37",
+            "condo": "13.02",
+            "bedroom": 3,
+            "bathroom": 1,
+            "garage": 2,
+            "pictures": [
+                "https://images.adsttc.com/media/images/5e70/12c5/b357/65c4/3e00/00ab/slideshow/FEATURED.jpg"
+            ],
+            "updateAt": "11 de fevereiro de 2021",
+            "lat": -25.4723154,
+            "lon": -49.2808289,
+            "address": {
+                "cep": "82030370",
+                "street": "Rua João Ferro",
+                "neightborhood": "Santa Felicidade",
+                "city": "Curitiba",
+                "state": "PR"
+            },
+            "contact": {
+                "name": "Julio",
+                "email": "julio@mail.com",
+                "phone": "41996664545"
+            }
+        },
+        {
+            "_id": "6051276b0e78a6604ee57037",
+            "title": "incididunt excepteur dolore",
+            "description": "Lorem occaecat nostrud tempor labore aliqua ad labore consequat tempor.",
+            "price": "1693.54",
+            "iptu": "112.86",
+            "condo": "254.66",
+            "bedroom": 5,
+            "bathroom": 5,
+            "garage": 4,
+            "pictures": [
+                "https://alugarja.com.br/uploads/imoveis/bf0e9de27246575738809c78a25ca3075829a19b26517.jpg"
+            ],
+            "updateAt": "10 de fevereiro de 2021",
+            "lat": -25.462637,
+            "lon": -49.275455,
+            "address": {
+                "cep": "82800320",
+                "street": "Rua Alberto Slud",
+                "neightborhood": "Capão da Imbuia",
+                "city": "Curitiba",
+                "state": "PR"
+            },
+            "contact": {
+                "name": "Alex",
+                "email": "alex@mail.com",
+                "phone": "41996775544"
+            }
+        },
+        {
+            "_id": "6051276bb601cc1e1d0f40a6",
+            "title": "anim amet qui",
+            "description": "Magna dolor excepteur ullamco incididunt adipisicing esse nulla voluptate officia pariatur labore nostrud sit ex.",
+            "price": "1824.96",
+            "iptu": "56.59",
+            "condo": "139.95",
+            "bedroom": 4,
+            "bathroom": 3,
+            "garage": 2,
+            "pictures": [
+                "https://www.galeriadaarquitetura.com.br/Img/projeto/702x415/5651/casa-113917.jpg"
+            ],
+            "updateAt": "13 de Março de 2021",
+            "lat": -25.467650,
+            "lon": -49.270964,
+            "address": {
+                "cep": "80730160",
+                "street": "Praça Alfredo Andersen",
+                "neightborhood": "Bigorrilho",
+                "city": "Curitiba",
+                "state": "PR"
+            },
+            "contact": {
+                "name": "André",
+                "email": "andre@mail.com",
+                "phone": "41996789954"
+            }
+        },
+        {
+            "_id": "6051276ba5966d9d54b9ab1f",
+            "title": "magna ipsum amet",
+            "description": "Pariatur dolor ad mollit laboris amet ad cupidatat consequat dolore adipisicing sunt aliqua officia.",
+            "price": "1525.58",
+            "iptu": "37.18",
+            "condo": "23.92",
+            "bedroom": 4,
+            "bathroom": 4,
+            "garage": 2,
+            "pictures": [
+                "https://s2.glbimg.com/l5tf5ALrBpZgm6SyiYv55yoUlh0=/620x413/smart/e.glbimg.com/og/ed/f/original/2020/01/20/leve-e-iluminada-esta-casa-na-bahia-mistura-estrutura-metalica-madeira-e-vidro_9.jpg"
+            ],
+            "updateAt": "14 de Março de 2021",
+            "lat": -25.378814,
+            "lon": -49.241308,
+            "address": {
+                "cep": "82640350",
+                "street": "Rua Fernando de Noronha",
+                "neightborhood": "Santa Cândida",
+                "city": "Curitiba",
+                "state": "PR"
+            },
+            "contact": {
+                "name": "Claudia",
+                "email": "claudia@mail.com",
+                "phone": "41997126565"
+            }
+        },
+        {
+            "_id": "6051276b48211b09ebab2dcd",
+            "title": "non laborum excepteur",
+            "description": "Culpa cillum qui eiusmod ex aliquip ullamco cupidatat ex tempor adipisicing.",
+            "price": "1874.25",
+            "iptu": "86.25",
+            "condo": "374.89",
+            "bedroom": 4,
+            "bathroom": 1,
+            "garage": 5,
+            "pictures": [
+                "https://i.pinimg.com/originals/54/63/6e/54636e36be6fbb83c29aa5524c09ea3a.jpg"
+            ],
+            "updateAt": "22 de fevereiro de 2021",
+            "lat": -25.444355,
+            "lon": -49.259271,
+            "address": {
+                "cep": "80230180",
+                "street": "Rua Conselheiro Laurindo",
+                "neightborhood": "Rebouças",
+                "city": "Curitiba",
+                "state": "PR"
+            },
+            "contact": {
+                "name": "Luana",
+                "email": "luana@mail.com",
+                "phone": "41997984555"
+            }
+        },
+        {
+            "_id": "6051276b615421963a7adbb1",
+            "title": "aliquip esse ut",
+            "description": "Commodo ex ipsum proident cillum.",
+            "price": "1611.4",
+            "iptu": "154.38",
+            "condo": "329.34",
+            "bedroom": 2,
+            "bathroom": 2,
+            "garage": 1,
+            "pictures": [
+                "https://st.depositphotos.com/1898669/1846/i/600/depositphotos_18468017-stock-photo-colonial-brick-house.jpg"
+            ],
+            "updateAt": "15 de fevereiro de 2021",
+            "lat": -25.436420,
+            "lon": -49.246240,
+            "address": {
+                "cep": "80050900",
+                "street": "Av Presidente Affonso Camargo",
+                "neightborhood": "Cristo Rei",
+                "city": "Curitiba",
+                "state": "PR"
+            },
+            "contact": {
+                "name": "Leonardo",
+                "email": "leo@mail.com",
+                "phone": "41996998587"
+            }
+        },
+        {
+            "_id": "6051276b4faa243f4179afd3",
+            "title": "officia Lorem officia",
+            "description": "Occaecat ea excepteur occaecat id nulla aute ea.",
+            "price": "1829.18",
+            "iptu": "98.01",
+            "condo": "235.71",
+            "bedroom": 5,
+            "bathroom": 4,
+            "garage": 3,
+            "pictures": [
+                "https://www.casascondor.com.br/wp-content/uploads/2019/09/tramites-legais-para-a-construcao-de-uma-casa.jpg"
+            ],
+            "updateAt": "25 de fevereiro de 2021",
+            "lat": -25.507940,
+            "lon": -49.260310,
+            "address": {
+                "cep": "81720174",
+                "street": "Rua Elisa Duck Warkentin",
+                "neightborhood": "Xaxim",
+                "city": "Curitiba",
+                "state": "PR"
+            },
+            "contact": {
+                "name": "Alessandra",
+                "email": "alessandra@mail.com",
+                "phone": "41996114569"
+            }
+        },
+        {
+            "_id": "6051276b4faa243f4179afd3",
+            "title": "officia Lorem officia",
+            "description": "Occaecat ea excepteur occaecat id nulla aute ea.",
+            "price": "1829.18",
+            "iptu": "98.01",
+            "condo": "235.71",
+            "bedroom": 5,
+            "bathroom": 4,
+            "garage": 3,
+            "pictures": [
+                "https://www.casascondor.com.br/wp-content/uploads/2019/09/tramites-legais-para-a-construcao-de-uma-casa.jpg"
+            ],
+            "updateAt": "25 de fevereiro de 2021",
+            "lat": -25.507940,
+            "lon": -49.260310,
+            "address": {
+                "cep": "81720174",
+                "street": "Rua Elisa Duck Warkentin",
+                "neightborhood": "Xaxim",
+                "city": "Curitiba",
+                "state": "PR"
+            },
+            "contact": {
+                "name": "Alessandra",
+                "email": "alessandra@mail.com",
+                "phone": "41996114569"
+            }
+        },
+        {
+            "_id": "6051276b4faa243f4179afd3",
+            "title": "officia Lorem officia",
+            "description": "Occaecat ea excepteur occaecat id nulla aute ea.",
+            "price": "1829.18",
+            "iptu": "98.01",
+            "condo": "235.71",
+            "bedroom": 5,
+            "bathroom": 4,
+            "garage": 3,
+            "pictures": [
+                "https://www.casascondor.com.br/wp-content/uploads/2019/09/tramites-legais-para-a-construcao-de-uma-casa.jpg"
+            ],
+            "updateAt": "25 de fevereiro de 2021",
+            "lat": -25.507940,
+            "lon": -49.260310,
+            "address": {
+                "cep": "81720174",
+                "street": "Rua Elisa Duck Warkentin",
+                "neightborhood": "Xaxim",
+                "city": "Curitiba",
+                "state": "PR"
+            },
+            "contact": {
+                "name": "Alessandra",
+                "email": "alessandra@mail.com",
+                "phone": "41996114569"
+            }
+        },
+        {
+            "_id": "6051276b4faa243f4179afd3",
+            "title": "officia Lorem officia",
+            "description": "Occaecat ea excepteur occaecat id nulla aute ea.",
+            "price": "1829.18",
+            "iptu": "98.01",
+            "condo": "235.71",
+            "bedroom": 5,
+            "bathroom": 4,
+            "garage": 3,
+            "pictures": [
+                "https://www.casascondor.com.br/wp-content/uploads/2019/09/tramites-legais-para-a-construcao-de-uma-casa.jpg"
+            ],
+            "updateAt": "25 de fevereiro de 2021",
+            "lat": -25.507940,
+            "lon": -49.260310,
+            "address": {
+                "cep": "81720174",
+                "street": "Rua Elisa Duck Warkentin",
+                "neightborhood": "Xaxim",
+                "city": "Curitiba",
+                "state": "PR"
+            },
+            "contact": {
+                "name": "Alessandra",
+                "email": "alessandra@mail.com",
+                "phone": "41996114569"
+            }
+        }
+    ]
+}

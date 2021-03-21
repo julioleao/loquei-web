@@ -24,6 +24,10 @@ a {
   color: var(--text-color);
 }
 
+.row {
+  margin: 0px;
+}
+
 main {
   flex: 1;
   max-width: 560px;
