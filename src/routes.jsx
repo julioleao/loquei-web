@@ -2,13 +2,14 @@ import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import NewPost from './pages/postNew';
+import PostNew from './pages/postNew';
 import List from './pages/list';
 import Home from './pages/home';
 import Detail from './pages/postDetail';
 import Forgot from './pages/forgot';
 import Auth from './pages/auth';
 import Profile from './pages/profile';
+import NewPost from './pages/newPost';
 
 function PrivateRoute({ component: Component, ...rest }) {
   const { isAuthenticated } = useSelector((state) => state.auth);
@@ -32,6 +33,7 @@ const Routes = () => {
   return (
     <Switch>
       <PrivateRoute component={NewPost} path='/create' />
+      <PrivateRoute component={PostNew} path='/newpost' />
       <PrivateRoute component={Profile} path='/profile' />
 
       <Route component={Home} path='/' exact />

@@ -19,7 +19,7 @@ import { searchCep } from '../../store/actions/postActions';
 import { tileTheme } from '../../components/map';
 import { mapIcon } from '../../components/markerMap';
 
-const NewPost = () => {
+const PostNew = () => {
   const [position, setPosition] = useState([0, 0]);
   const [ufs, setUfs] = useState([]);
   const [cities, setCities] = useState([]);
@@ -324,4 +324,4 @@ const NewPost = () => {
   );
 };
 
-export default NewPost;
+export default PostNew;

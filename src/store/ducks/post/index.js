@@ -1,6 +1,6 @@
 import { createAction, createReducer } from '@reduxjs/toolkit';
 
-const INITIAL_STATE = [];
+const INITIAL_STATE = null;
 
 export const addPost = createAction('ADD_POST');
 export const addPosts = createAction('ADD_POSTS');

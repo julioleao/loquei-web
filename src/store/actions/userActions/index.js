@@ -2,7 +2,7 @@ import api from '../../../services/api';
 import { login, register } from '../../ducks/auth';
 import { toast } from 'react-toastify';
 
-const toastProps = {
+export const toastProps = {
     position: 'top-right',
     autoClose: 5000,
     hideProgressBar: false,

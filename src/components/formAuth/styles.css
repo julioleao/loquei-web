@@ -1,7 +1,7 @@
 .container-md {
   margin: 0 auto;
   padding: 64px;
-  max-width: 850px;
+  max-width: 1100px;
   background: #fff;
   border-radius: 8px;
   margin-block: 5%;
@@ -29,14 +29,27 @@ div .form-group .form-label {
   margin-bottom: 12px;
 }
 
+select option,
+.input-group-text,
+.custom-select,
 .form-control {
-  flex: 1;
   background: #f0f0f5;
   border-radius: 8px;
   border: 0;
-  padding: 26px 24px;
   font-size: 16px;
   color: #6c6c80;
+}
+
+form .leaflet-container {
+  width: 100%;
+  height: 350px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+#formSpan {
+  font-size: 12px;
+  padding-left: 5px;
 }
 
 legend {
@@ -45,8 +58,13 @@ legend {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 40px;
-  padding-bottom: 20px;
+  padding-block: 20px;
+  padding-top: 6%;
   border-bottom: 1px solid #d3e2e5;
+}
+
+fieldset {
+  min-inline-size: auto;
 }
 
 .input::placeholder {
