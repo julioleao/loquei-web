@@ -1,18 +1,9 @@
 import React from 'react';
-import { FiArrowRight, FiPlus } from 'react-icons/fi';
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
-import Leaflet from 'leaflet';
+import { FiPlus } from 'react-icons/fi';
+import { MapContainer, TileLayer } from 'react-leaflet';
 import { Link } from 'react-router-dom';
 
-import pinHome from '../../assets/pinHome.svg';
 import MarkerMap from '../markerMap';
-import { post } from '../../utils/db.json';
-
-const mapIcon = Leaflet.icon({
-  iconUrl: pinHome,
-  iconSize: [30, 30],
-  iconAnchor: [15, 15],
-});
 
 export const tileTheme = {
   attribution:
@@ -21,6 +12,7 @@ export const tileTheme = {
 };
 
 const Map = (props) => {
+  const { post } = props;
   return (
     <div style={{ width: '100%', height: '87.5vh' }}>
       <MapContainer
@@ -34,16 +26,6 @@ const Map = (props) => {
         {post.map((post, index) => (
           <MarkerMap key={index} marker={post} />
         ))}
-
-        {/*  <Marker position={[lat, lon]} icon={mapIcon}>
-          <Popup closeButton={false} className='map-popup'>
-            {title}
-            <img src={picture} />
-            <Link to='/detail/1'>
-              <FiArrowRight size={20} color='#FFF' />
-            </Link>
-          </Popup>
-        </Marker> */}
       </MapContainer>
 
       <Link to='/create' className='new-post'>

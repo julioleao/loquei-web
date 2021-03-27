@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import authReducer from './ducks/auth';
-import postReducer from './ducks/post';
+import auth from './ducks/auth';
+import loader from './ducks/loader';
+import post from './ducks/post';
 
 export default configureStore({
     reducer: {
-        auth: authReducer,
-        post: postReducer,
+        auth: auth,
+        post: post,
+        loading: loader
     }
 });

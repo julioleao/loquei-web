@@ -7,20 +7,18 @@ import {
   FormControl,
   Button,
   OverlayTrigger,
-  Tooltip,
   Image,
   Popover,
   Col,
   Row,
 } from 'react-bootstrap';
-import { FiLogIn, FiLogOut, FiUser } from 'react-icons/fi';
+import { FiLogIn } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import logoutService from '../../services/logoutService';
 import logo from '../../assets/logo.svg';
-import user from '../../assets/user-placeholder.svg';
 import './styles.css';
 
 function Header() {
@@ -30,10 +28,7 @@ function Header() {
     let path = `/auth`;
     history.push(path);
   };
-  const register = () => {
-    let path = `/auth`;
-    history.push(path);
-  };
+
   const popover = (
     <Popover id='popover-basic'>
       <Popover.Title

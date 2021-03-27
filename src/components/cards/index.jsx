@@ -1,34 +1,25 @@
 import React from 'react';
-import {
-  Card,
-  CardDeck,
-  Col,
-  Container,
-  ListGroup,
-  Row,
-} from 'react-bootstrap';
+import { Card, Col, Row } from 'react-bootstrap';
 import { FaBed, FaBath, FaCar } from 'react-icons/fa';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import moment from 'moment';
 
-import house from '../../assets/house.jpg';
 import './styles.css';
 
 const Cards = (props) => {
   const {
     _id,
-    title,
     pictures,
-    description,
-    updateAt,
+    updatedAt,
     bedroom,
     bathroom,
     garage,
     price,
-    iptu,
-    condo,
     address,
   } = props.card;
-  const { cep, city, neightborhood, state, street } = address;
+  const { city, neightborhood, state, street } = address;
+
+  const date = moment(updatedAt).format('LL');
 
   const history = useHistory();
 
@@ -68,7 +59,7 @@ const Cards = (props) => {
         <Card.Footer
           style={{ justifyContent: 'space-between', display: 'flex' }}
         >
-          <small className='text-muted'>Atualizado: {updateAt}</small>
+          <small className='text-muted'>Atualizado: {date}</small>
         </Card.Footer>
       </Card>
     </div>

@@ -5,16 +5,9 @@ import { Link } from 'react-router-dom';
 import Leaflet from 'leaflet';
 
 import pinHome from '../../assets/pinHome.svg';
-import {
-  Button,
-  Card,
-  Col,
-  Container,
-  Image,
-  ListGroup,
-  Row,
-} from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { FaBath, FaBed, FaCar } from 'react-icons/fa';
+import moment from 'moment';
 
 export const mapIcon = Leaflet.icon({
   iconUrl: pinHome,
@@ -25,19 +18,17 @@ export const mapIcon = Leaflet.icon({
 const MarkerMap = (props) => {
   const {
     _id,
-    title,
     pictures,
-    description,
-    updateAt,
     bedroom,
     bathroom,
     garage,
     price,
-    iptu,
-    condo,
-    lat,
-    lon,
+    mapLocation,
+    createdAt,
   } = props.marker;
+  const date = moment(createdAt).format('LL');
+
+  const { lat, lon } = mapLocation;
   return (
     <div>
       <Marker position={[lat, lon]} icon={mapIcon}>
@@ -63,17 +54,9 @@ const MarkerMap = (props) => {
               </Link>
 
               <small style={{ paddingTop: '20px' }}>Criado:</small>
-              <small className='text-muted'>{updateAt}</small>
+              <small className='text-muted'>{date}</small>
             </Card.Body>
           </Card>
-          {/*  <Container fluid>
-            <Col>
-              <Row>{title}</Row>
-              <Row>
-                <Image src={pictures[0]} thumbnail />
-              </Row>
-            </Col>
-          </Container> */}
         </Popup>
       </Marker>
     </div>

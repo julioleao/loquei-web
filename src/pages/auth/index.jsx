@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
 import FormAuth from '../../components/formAuth';
 
-import { createUser } from '../../services/firebaseService';
 import { authLogin } from '../../store/actions/userActions';
 
 const Auth = () => {

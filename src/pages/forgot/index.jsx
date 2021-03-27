@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import { createUser } from '../../services/firebaseService';
-
 import './styles.css';
 
 const Forgot = () => {
@@ -13,7 +11,6 @@ const Forgot = () => {
 
     //const { email, password } = form;
 
-    console.log(form);
     //createUser(email, password);
 
     //console.log(data);

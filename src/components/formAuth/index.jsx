@@ -28,27 +28,12 @@ const FormAuth = () => {
 
   function submitRegisterForm(e) {
     e.preventDefault();
-
-    //const { email, password } = form;
-
-    //console.log(form);
     dispatch(authRegister(registerForm));
-    //createUser(email, password);
-
-    //console.log(data);
-    /* dispatch(); */
   }
+
   function submitLoginForm(e) {
     e.preventDefault();
-
-    //const { email, password } = form;
-
-    //console.log(form);
     dispatch(authLogin(loginForm));
-    //createUser(email, password);
-
-    //console.log(data);
-    /* dispatch(); */
   }
   return (
     <div>

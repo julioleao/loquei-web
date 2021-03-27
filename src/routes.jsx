@@ -2,7 +2,6 @@ import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import PostNew from './pages/postNew';
 import List from './pages/list';
 import Home from './pages/home';
 import Detail from './pages/postDetail';
@@ -33,7 +32,7 @@ const Routes = () => {
   return (
     <Switch>
       <PrivateRoute component={NewPost} path='/create' />
-      <PrivateRoute component={PostNew} path='/newpost' />
+
       <PrivateRoute component={Profile} path='/profile' />
 
       <Route component={Home} path='/' exact />

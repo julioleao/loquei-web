@@ -7,19 +7,21 @@ import '../../styles/globalStyles.css';
 
 const Home = () => {
   return (
-    <div id='page-home'>
-      <div className='content'>
-        <main>
-          <h1>Aluguel fácil e rápido!</h1>
-          <p>Alugue direto com o proprietário e sem burocracia.</p>
+    <div>
+      <div id='page-home'>
+        <div className='content'>
+          <main>
+            <h1>Aluguel fácil e rápido!</h1>
+            <p>Alugue direto com o proprietário e sem burocracia.</p>
 
-          <Link to='/list'>
-            <span>
-              <FiSearch />
-            </span>
-            <strong>Busque seu imóvel</strong>
-          </Link>
-        </main>
+            <Link to='/list'>
+              <span>
+                <FiSearch />
+              </span>
+              <strong>Busque seu imóvel</strong>
+            </Link>
+          </main>
+        </div>
       </div>
     </div>
   );

@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Tabs, Tab, Card, Container, Row, Col } from 'react-bootstrap';
-import moment from 'moment';
 import 'moment/locale/pt-br';
 
 import Map from '../../components/map';
 import Cards from '../../components/cards';
-import { post } from '../../utils/db.json';
 
 import '../../styles/globalStyles.css';
 import './styles.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { listPost } from '../../store/actions/postActions';
 
 const List = () => {
-  //console.log(post);
+  const post = useSelector((state) => state.post);
+  const dispatch = useDispatch();
 
+  useEffect(() => dispatch(listPost()), []);
   return (
     <div id='page-map'>
       <Container fluid style={{ padding: '0' }}>
@@ -33,9 +35,7 @@ const List = () => {
           <Col sm={9} style={{ padding: '0' }}>
             <Tabs defaultActiveKey='map'>
               <Tab eventKey='map' title='Mapa'>
-                <Map />
-
-                {/*  <Map /> */}
+                <Map post={post} />
               </Tab>
               <Tab eventKey='cards' title='Lista'>
                 <Container fluid>
