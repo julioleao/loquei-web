@@ -81,8 +81,8 @@ export const model = {
     ],
 };
 export const mapLocation = {
-    lat: 0,
-    lon: 0,
+    lat: null,
+    lon: null,
 };
 
 export const address = {

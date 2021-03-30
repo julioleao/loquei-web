@@ -5,6 +5,8 @@ import { useHistory } from 'react-router-dom';
 import moment from 'moment';
 
 import './styles.css';
+import { postDetail } from '../../store/actions/postActions';
+import { useDispatch } from 'react-redux';
 
 const Cards = (props) => {
   const {
@@ -19,17 +21,18 @@ const Cards = (props) => {
   } = props.card;
   const { city, neightborhood, state, street } = address;
 
+  const dispatch = useDispatch();
   const date = moment(updatedAt).format('LL');
 
   const history = useHistory();
 
-  const routeChange = () => {
+  const RouteChange = () => {
     let path = `/detail/${_id}`;
     history.push(path);
   };
   return (
     <div id='cards'>
-      <Card style={{ width: '18rem', margin: '20px' }} onClick={routeChange}>
+      <Card style={{ width: '18rem', margin: '20px' }} onClick={RouteChange}>
         <Card.Header className='text-center'>R$ {price}</Card.Header>
         <Card.Img variant='top' src={pictures[0]} style={{ height: '170px' }} />
         <Card.Header

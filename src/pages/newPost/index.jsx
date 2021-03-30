@@ -34,7 +34,7 @@ import {
 import Loader from '../../components/loader';
 
 const NewPost = () => {
-  const postLocation = useSelector((state) => state.post.postLocation);
+  const postLocation = useSelector((state) => state.cep.postLocation);
   const { loading } = useSelector((state) => state.loading);
 
   const [form, setForm] = useState(model);

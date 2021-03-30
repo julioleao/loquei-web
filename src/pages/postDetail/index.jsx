@@ -1,92 +1,132 @@
-import React from 'react';
-import { FiClock, FiInfo } from 'react-icons/fi';
-
+import React, { useEffect } from 'react';
+import { Col, Container, InputGroup, ListGroup, Row } from 'react-bootstrap';
+import { FaBath, FaBed, FaCar } from 'react-icons/fa';
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
+import Gallery from '../../components/gallery';
+import Loader from '../../components/loader';
+import { tileTheme } from '../../components/map';
+import { postDetail } from '../../store/actions/postActions';
+import { mapIcon } from '../../components/markerMap';
+import List from '../list';
 import './styles.css';
 
-export default function Orphanage() {
+const PostDetail = (props) => {
+  const data = props.match.params.id;
+  const { loading } = useSelector((state) => state.loading);
+  const post = useSelector((state) => state.detail.post);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(postDetail(data));
+  }, [data]);
+
+  if (!post) {
+    return <Loader />;
+  }
+
   return (
-    <div id='page-orphanage'>
-      <main>
-        <div className='orphanage-details'>
-          <img
-            src='https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg'
-            alt='Lar das meninas'
-          />
+    <div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Container fluid='md'>
+          <Gallery pics={post} />
 
-          <div className='images'>
-            <button className='active' type='button'>
-              <img
-                src='https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg'
-                alt='Lar das meninas'
-              />
-            </button>
-            <button type='button'>
-              <img
-                src='https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg'
-                alt='Lar das meninas'
-              />
-            </button>
-            <button type='button'>
-              <img
-                src='https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg'
-                alt='Lar das meninas'
-              />
-            </button>
-            <button type='button'>
-              <img
-                src='https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg'
-                alt='Lar das meninas'
-              />
-            </button>
-            <button type='button'>
-              <img
-                src='https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg'
-                alt='Lar das meninas'
-              />
-            </button>
-            <button type='button'>
-              <img
-                src='https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg'
-                alt='Lar das meninas'
-              />
-            </button>
+          <ListGroup horizontal>
+            <ListGroup.Item>
+              <InputGroup className='mb-3'>
+                <InputGroup.Prepend>
+                  <InputGroup.Text>
+                    <FaBed />
+                  </InputGroup.Text>
+                </InputGroup.Prepend>
+                <InputGroup.Append>
+                  <InputGroup.Text>{post.bedroom}</InputGroup.Text>
+                </InputGroup.Append>
+              </InputGroup>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <InputGroup className='mb-3'>
+                <InputGroup.Prepend>
+                  <InputGroup.Text>
+                    <FaBath />
+                  </InputGroup.Text>
+                </InputGroup.Prepend>
+                <InputGroup.Append>
+                  <InputGroup.Text>{post.bathroom}</InputGroup.Text>
+                </InputGroup.Append>
+              </InputGroup>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <InputGroup className='mb-3'>
+                <InputGroup.Prepend>
+                  <InputGroup.Text>
+                    <FaCar />
+                  </InputGroup.Text>
+                </InputGroup.Prepend>
+                <InputGroup.Append>
+                  <InputGroup.Text>{post.garage}</InputGroup.Text>
+                </InputGroup.Append>
+              </InputGroup>
+            </ListGroup.Item>
+          </ListGroup>
+
+          <Row>
+            <legend>
+              <Col xs>
+                <h2>{post.title}</h2>
+              </Col>
+              <Col md='auto'>
+                <h4>Aluguel R$</h4>
+                <h6>Condomínio R$</h6>
+                <h6>Total R$</h6>
+              </Col>
+              <Col md='auto'>
+                <h4>{post.price},00</h4>
+                <h6>{post.condo},00</h6>
+                <h6>{post.price + post.condo},00</h6>
+              </Col>
+            </legend>
+          </Row>
+
+          <div style={{ marginBottom: '40px' }}>
+            <Row>{post.description}</Row>
           </div>
 
-          <div className='orphanage-details-content'>
-            <h1>Lar das meninas</h1>
-            <p>
-              Presta assistência a crianças de 06 a 15 anos que se encontre em
-              situação de risco e/ou vulnerabilidade social.
-            </p>
+          <fieldset>
+            <MapContainer
+              center={[post.mapLocation.lat, post.mapLocation.lon]}
+              zoom={14}
+              scrollWheelZoom={true}
+            >
+              <TileLayer
+                attribution={tileTheme.attribution}
+                url={tileTheme.url}
+              />
+              <Marker
+                position={[post.mapLocation.lat, post.mapLocation.lon]}
+                icon={mapIcon}
+              >
+                <Popup>{post.title}</Popup>
+              </Marker>
+            </MapContainer>
 
-            <div className='map-container'>
-              <footer>
-                <a href=''>Ver rotas no Google Maps</a>
-              </footer>
-            </div>
-
-            <hr />
-
-            <h2>Instruções para visita</h2>
-            <p>
-              Venha como se sentir mais à vontade e traga muito amor para dar.
-            </p>
-
-            <div className='open-details'>
-              <div className='hour'>
-                <FiClock size={32} color='#15B6D6' />
-                Segunda à Sexta <br />
-                8h às 18h
-              </div>
-              <div className='open-on-weekends'>
-                <FiInfo size={32} color='#39CC83' />
-                Atendemos <br />
-                fim de semana
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
+            <ListGroup horizontal>
+              <ListGroup.Item>Rua: {post.address.street}</ListGroup.Item>
+              <ListGroup.Item>
+                Bairro: {post.address.neighborhood}
+              </ListGroup.Item>
+              <ListGroup.Item>
+                Cidade: {post.address.city} - {post.address.state}
+              </ListGroup.Item>
+            </ListGroup>
+          </fieldset>
+        </Container>
+      )}
     </div>
   );
-}
+};
+
+export default PostDetail;
