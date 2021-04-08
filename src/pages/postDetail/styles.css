@@ -5,3 +5,39 @@
 .list-group-item {
   border: 0;
 }
+
+#contact-button .wapp-button {
+  background-color: #25d366;
+  width: 22vw;
+}
+
+#contact-button .wapp-button:hover {
+  background-color: #128c7e;
+}
+
+#contact-button .email-button {
+  background-color: #ea4335;
+  width: 22vw;
+}
+
+#contact-button .email-button:hover {
+  background-color: #bb001b;
+}
+
+.google-maps-btn.btn.btn-primary {
+  height: auto;
+  width: 200px;
+  margin: 0;
+
+  justify-content: space-between;
+  display: flex;
+  background-color: #4a89f3;
+}
+
+.google-maps-btn.btn.btn-primary:hover {
+  background-color: #dd4b3e;
+}
+
+.leaflet-container {
+  z-index: 0;
+}

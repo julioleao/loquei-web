@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Col, Container, Form, InputGroup } from 'react-bootstrap';
+import Resizer from 'react-image-file-resizer';
+import {
+  Button,
+  Col,
+  Container,
+  Form,
+  FormControl,
+  InputGroup,
+} from 'react-bootstrap';
 import {
   FaBath,
   FaBed,
@@ -30,14 +38,19 @@ import {
   mapLocation,
   address,
   contact,
+  toastProps,
 } from '../../utils/consts';
 import Loader from '../../components/loader';
+import './styles.css';
+import { FiPlus } from 'react-icons/fi';
+import { toast } from 'react-toastify';
 
 const NewPost = () => {
   const postLocation = useSelector((state) => state.cep.postLocation);
-  const { loading } = useSelector((state) => state.loading);
-
+  const loading = useSelector((state) => state.loading.loading);
+  const userId = useSelector((state) => state.auth);
   const [form, setForm] = useState(model);
+  const [images, setImages] = useState([]);
   const [formAddress, setFormAddress] = useState(address);
   const [formContact, setFormContact] = useState(contact);
   const [formMapLocation, setFormMapLocation] = useState(mapLocation);
@@ -60,6 +73,37 @@ const NewPost = () => {
         <Popup>Seu imóvel está aqui</Popup>
       </Marker>
     );
+  };
+
+  const resizeFile = (file) =>
+    new Promise((resolve) => {
+      Resizer.imageFileResizer(
+        file,
+        400,
+        400,
+        'WEBP',
+        100,
+        0,
+        (uri) => {
+          resolve(uri);
+        },
+        'base64'
+      );
+    });
+
+  const onChangeFile = async (e) => {
+    const fi = e.target;
+    let image = [];
+    if (fi.files.length <= 9) {
+      for (let i = 0; i < fi.files.length; i++) {
+        const file = fi.files[i];
+        image[i] = await resizeFile(file);
+      }
+    } else {
+      return toast.error('Quantidade máxima de fotos são 9', toastProps);
+    }
+
+    setImages(image);
   };
 
   const onChangeForm = (e) => {
@@ -99,7 +143,6 @@ const NewPost = () => {
       bedroom,
       bathroom,
       garage,
-      pictures,
     } = form;
     const { lat, lon } = formMapLocation;
     const { cep, city, neighborhood, state, street } = formAddress;
@@ -112,7 +155,7 @@ const NewPost = () => {
       bedroom,
       bathroom,
       garage,
-      pictures,
+      pictures: images,
       mapLocation: {
         lat,
         lon,
@@ -178,7 +221,7 @@ const NewPost = () => {
                   </InputGroup.Text>
                 </InputGroup.Prepend>
                 <Form.Control
-                  type='numeric'
+                  type='number'
                   name='price'
                   autoComplete='transaction-amount'
                   onChange={onChangeForm}
@@ -199,7 +242,7 @@ const NewPost = () => {
                   </InputGroup.Text>
                 </InputGroup.Prepend>
                 <Form.Control
-                  type='numeric'
+                  type='number'
                   name='condo'
                   autoComplete='transaction-amount'
                   onChange={onChangeForm}
@@ -293,6 +336,28 @@ const NewPost = () => {
             </Form.Group>
           </Form.Row>
 
+          <Form.Group>
+            <Form.Label>Fotos</Form.Label>
+            <span id='formSpan'>(Máximo 9 fotos)*</span>
+            <div className='images-container'>
+              {images.map((img, index) => {
+                return <img key={index} src={img} alt='' />;
+              })}
+              <label htmlFor='image[]' id='new-image'>
+                <FiPlus suze={24} color='#15b6d6' />
+              </label>
+              <InputGroup>
+                <FormControl
+                  id='image[]'
+                  type='file'
+                  multiple
+                  accept='image/*'
+                  onChange={onChangeFile}
+                />
+              </InputGroup>
+            </div>
+          </Form.Group>
+
           <legend>
             <h4>Dados do imóvel</h4>
           </legend>
@@ -384,7 +449,7 @@ const NewPost = () => {
                   ? formMapLocation
                   : [-25.4723154, -49.2808289]
               }
-              zoom={5}
+              zoom={4}
               scrollWheelZoom={true}
             >
               <TileLayer

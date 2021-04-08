@@ -31,7 +31,7 @@ const MarkerMap = (props) => {
   const { lat, lon } = mapLocation;
   return (
     <div>
-      <Marker position={[lat, lon]} icon={mapIcon}>
+      <Marker position={[lat, lon]} icon={mapIcon} id='marker'>
         <Popup closeButton={false} className='map-popup'>
           <Card>
             <Card.Header className='text-center'>
@@ -50,10 +50,11 @@ const MarkerMap = (props) => {
             </Card.Header>
             <Card.Body>
               <Link to={`/detail/${_id}`}>
-                <FiArrowRight size={20} color='#FFF' />
+                Ver imóvel
+                {/* <FiArrowRight size={20} color='#FFF' /> */}
               </Link>
 
-              <small style={{ paddingTop: '20px' }}>Criado:</small>
+              <small style={{ paddingTop: '20px' }}>Criado : </small>
               <small className='text-muted'>{date}</small>
             </Card.Body>
           </Card>

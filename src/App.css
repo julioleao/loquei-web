@@ -1,9 +1,10 @@
 @import '~react-image-gallery/styles/css/image-gallery.css';
 
 :root {
-  --primary-color: #4abdac;
-  --title-color: #fc4a1a;
-  --text-color: #5b4823ff;
+  --primary-color: #f87762;
+  --title-color: #f66763;
+  --text-color: #343a40;
+  --secondary-color: #4e596f;
 }
 
 * {
@@ -13,7 +14,7 @@
 }
 
 body {
-  background: #f0f0f5;
+  background: var(--secondary-color);
   -webkit-font-smoothing: antialiased;
   color: var(--text-color);
 }

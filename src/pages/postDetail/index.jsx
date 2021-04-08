@@ -1,15 +1,27 @@
 import React, { useEffect } from 'react';
-import { Col, Container, InputGroup, ListGroup, Row } from 'react-bootstrap';
-import { FaBath, FaBed, FaCar } from 'react-icons/fa';
+import {
+  Button,
+  Col,
+  Container,
+  InputGroup,
+  ListGroup,
+  Row,
+} from 'react-bootstrap';
+import {
+  FaBath,
+  FaBed,
+  FaCar,
+  FaEnvelope,
+  FaMapMarkedAlt,
+  FaWhatsapp,
+} from 'react-icons/fa';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router';
 import Gallery from '../../components/gallery';
 import Loader from '../../components/loader';
 import { tileTheme } from '../../components/map';
 import { postDetail } from '../../store/actions/postActions';
 import { mapIcon } from '../../components/markerMap';
-import List from '../list';
 import './styles.css';
 
 const PostDetail = (props) => {
@@ -25,6 +37,9 @@ const PostDetail = (props) => {
   if (!post) {
     return <Loader />;
   }
+
+  const wappLink = `https://api.whatsapp.com/send?phone=+55${post.contact.phone}`;
+  const googleMaps = `http://www.google.com/maps/place/${post.mapLocation.lat},${post.mapLocation.lon}`;
 
   return (
     <div>
@@ -95,34 +110,75 @@ const PostDetail = (props) => {
             <Row>{post.description}</Row>
           </div>
 
-          <fieldset>
-            <MapContainer
-              center={[post.mapLocation.lat, post.mapLocation.lon]}
-              zoom={14}
-              scrollWheelZoom={true}
+          <MapContainer
+            center={[post.mapLocation.lat, post.mapLocation.lon]}
+            zoom={14}
+            scrollWheelZoom={true}
+          >
+            <TileLayer
+              attribution={tileTheme.attribution}
+              url={tileTheme.url}
+            />
+            <Marker
+              position={[post.mapLocation.lat, post.mapLocation.lon]}
+              icon={mapIcon}
             >
-              <TileLayer
-                attribution={tileTheme.attribution}
-                url={tileTheme.url}
-              />
-              <Marker
-                position={[post.mapLocation.lat, post.mapLocation.lon]}
-                icon={mapIcon}
-              >
-                <Popup>{post.title}</Popup>
-              </Marker>
-            </MapContainer>
+              <Popup>
+                <Button
+                  className='google-maps-btn'
+                  onClick={() => window.open(googleMaps, '_blank')}
+                >
+                  <FaMapMarkedAlt size={20} />
+                  Ver no Google Maps
+                </Button>
+              </Popup>
+            </Marker>
+          </MapContainer>
 
-            <ListGroup horizontal>
-              <ListGroup.Item>Rua: {post.address.street}</ListGroup.Item>
-              <ListGroup.Item>
-                Bairro: {post.address.neighborhood}
-              </ListGroup.Item>
-              <ListGroup.Item>
-                Cidade: {post.address.city} - {post.address.state}
-              </ListGroup.Item>
-            </ListGroup>
-          </fieldset>
+          <ListGroup horizontal>
+            <ListGroup.Item>Rua: {post.address.street}</ListGroup.Item>
+            <ListGroup.Item>Bairro: {post.address.neighborhood}</ListGroup.Item>
+            <ListGroup.Item>
+              Cidade: {post.address.city} - {post.address.state}
+            </ListGroup.Item>
+          </ListGroup>
+
+          <Row>
+            <legend>
+              <Col xs>
+                <h2>Contato</h2>
+              </Col>
+              <Col md='auto'>
+                <h5>{post.contact.name}</h5>
+              </Col>
+            </legend>
+          </Row>
+
+          <div id='contact-button'>
+            <Row style={{ justifyContent: 'center' }}>
+              <Col md='auto'>
+                <Button
+                  type='button'
+                  className='wapp-button'
+                  onClick={() => window.open(wappLink, '_blank')}
+                >
+                  <FaWhatsapp size={25} color='#FFF' /> WhatsApp
+                </Button>
+              </Col>
+
+              <Col md='auto'>
+                <Button
+                  type='button'
+                  className='email-button'
+                  onClick={() =>
+                    (window.location.href = `mailto:${post.contact.email}`)
+                  }
+                >
+                  <FaEnvelope size={25} color='#FFF' /> E-mail
+                </Button>
+              </Col>
+            </Row>
+          </div>
         </Container>
       )}
     </div>

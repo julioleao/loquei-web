@@ -19,7 +19,7 @@ const Map = (props) => {
         center={[-25.4723154, -49.2808289]}
         zoom={15}
         scrollWheelZoom={true}
-        style={{ width: '100%', height: '87.5vh' }}
+        style={{ width: '100%', height: '87.5vh', borderRadius: '0' }}
       >
         <TileLayer attribution={tileTheme.attribution} url={tileTheme.url} />
 

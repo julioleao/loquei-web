@@ -12,7 +12,7 @@ import {
   Col,
   Row,
 } from 'react-bootstrap';
-import { FiLogIn } from 'react-icons/fi';
+import { FiLogIn, FiLogOut } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -37,7 +37,7 @@ function Header() {
       >
         {email}
       </Popover.Title>
-      <Col>
+      <Col id='popover'>
         <Popover.Content>
           <Row style={{ paddingBottom: '8px' }}>
             <NavLink to='/profile' activeClassName='active'>
@@ -47,8 +47,7 @@ function Header() {
           <Row>
             <NavLink to='/login' activeClassName='active'>
               <Button variant='outline-info' onClick={authLogoutButton}>
-                Logout
-                <FiLogIn size={15} />
+                Sair
               </Button>
             </NavLink>
           </Row>
@@ -63,7 +62,7 @@ function Header() {
     isAuthenticated && dispatch(logoutService());
   }
   return (
-    <Navbar bg='light' expand='lg' variant='light'>
+    <Navbar expand='lg' id='header' bg='dark' variant='dark'>
       <Navbar.Brand>
         <Link to='/'>
           <img src={logo} alt='Loquei' />
@@ -79,19 +78,12 @@ function Header() {
           <Nav.Link as={Link} to='/create'>
             Divulgar
           </Nav.Link>
-          <NavDropdown title='Alugar' id='basic-nav-dropdown'>
-            <NavDropdown.Item>Casa</NavDropdown.Item>
-            <NavDropdown.Item>Apartamento</NavDropdown.Item>
-            <NavDropdown.Item>Quitinete</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item>Outros</NavDropdown.Item>
-          </NavDropdown>
         </Nav>
         <Form inline>
-          <FormControl type='text' placeholder='Busca...' className='mr-sm-2' />
+          {/*           <FormControl type='text' placeholder='Busca...' className='mr-sm-2' />
           <Button variant='outline-danger' style={{ marginRight: '8px' }}>
             Buscar
-          </Button>
+          </Button> */}
           {isAuthenticated ? (
             <OverlayTrigger
               trigger='click'
@@ -114,8 +106,7 @@ function Header() {
           ) : (
             <div>
               <Button variant='outline-info' onClick={login}>
-                Login
-                <FiLogIn size={15} style={{ marginLeft: '6px' }} />
+                Entrar
               </Button>
             </div>
           )}

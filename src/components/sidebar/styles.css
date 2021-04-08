@@ -1,0 +1,26 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  min-height: 100vh !important;
+  padding: 74.7px 0 0;
+
+  background-color: var(--secondary-color);
+}
+
+.sidebar a.nav-link {
+  color: ghostwhite;
+}
+
+#sidebar-wrapper .sidebar-container {
+  background-color: var(--text-color);
+  width: 50%;
+  height: 50%;
+  min-width: 95%;
+  min-height: 92%;
+  border-radius: 10px;
+
+  padding-top: 20px;
+  margin: 2%;
+}

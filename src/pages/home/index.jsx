@@ -4,25 +4,22 @@ import { Link } from 'react-router-dom';
 
 import './styles.css';
 import '../../styles/globalStyles.css';
+import { Container } from 'react-bootstrap';
 
 const Home = () => {
   return (
-    <div>
-      <div id='page-home'>
-        <div className='content'>
-          <main>
-            <h1>Aluguel fácil e rápido!</h1>
-            <p>Alugue direto com o proprietário e sem burocracia.</p>
+    <div id='page-home'>
+      <Container fluid='lg'>
+        <h1>Aluguel fácil e rápido!</h1>
+        <p>Alugue direto com o proprietário e sem burocracia.</p>
 
-            <Link to='/list'>
-              <span>
-                <FiSearch />
-              </span>
-              <strong>Busque seu imóvel</strong>
-            </Link>
-          </main>
-        </div>
-      </div>
+        <Link to='/list'>
+          <span>
+            <FiSearch />
+          </span>
+          <strong>Busque seu imóvel</strong>
+        </Link>
+      </Container>
     </div>
   );
 };

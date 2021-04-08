@@ -18,10 +18,11 @@ export const authLogin = (user) => {
             .post('/login', user)
             .then((res) => {
                 const { token } = res.data;
-                const { name, email } = res.data.user;
+                const { name, email, _id } = res.data.user;
                 localStorage.setItem('token', token);
                 localStorage.setItem('name', name);
                 localStorage.setItem('email', email);
+                localStorage.setItem('userId', _id);
                 //console.log(res.data.user);
                 dispatch(login(res.data));
 
@@ -49,10 +50,11 @@ export const authRegister = (user) => {
             .post('/register', user)
             .then((res) => {
                 const { token } = res.data;
-                const { name, email } = res.data.user;
+                const { name, email, _id } = res.data.user;
                 localStorage.setItem('token', token);
                 localStorage.setItem('name', name);
                 localStorage.setItem('email', email);
+                localStorage.setItem('userId', _id);
                 dispatch(register(res.data));
                 toast.success('Cadastro realizado com sucesso', toastProps);
                 //window.location.reload();

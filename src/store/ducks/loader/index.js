@@ -1,7 +1,7 @@
 import { createAction, createReducer } from '@reduxjs/toolkit';
 
 const INITIAL_STATE = {
-    loading: true,
+    loading: false,
     success: false,
 };
 

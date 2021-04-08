@@ -10,6 +10,7 @@ import './styles.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { listPost } from '../../store/actions/postActions';
 import Loader from '../../components/loader';
+import Sidebar from '../../components/sidebar';
 
 const List = () => {
   const posts = useSelector((state) => state.post);
@@ -22,21 +23,15 @@ const List = () => {
         <Loader />
       ) : (
         <Container fluid style={{ padding: '0' }}>
-          <Row>
-            <Col sm={3} style={{ padding: '0' }}>
-              <aside>
-                <main>
-                  <h2>Escolha um imóvel no mapa</h2>
-                  <p>E entre em contato direto com o proprietário</p>
-                </main>
-
-                <footer>
-                  <strong>Curitiba</strong>
-                  <span>Paraná</span>
-                </footer>
-              </aside>
+          <Row style={{ paddingTop: '73px' }}>
+            <Col xs={2} id='sidebar-wrapper'>
+              <Sidebar />
             </Col>
-            <Col sm={9} style={{ padding: '0' }}>
+            <Col
+              xs={10}
+              style={{ paddingInline: '0' }}
+              id={'page-content-wrapper'}
+            >
               <Tabs defaultActiveKey='map'>
                 <Tab eventKey='map' title='Mapa'>
                   <Map post={posts} />

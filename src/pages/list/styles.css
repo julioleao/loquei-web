@@ -51,6 +51,25 @@
 #page-map .leaflet-container {
   z-index: 5;
 }
+#page-map .leaflet-container a {
+  color: ghostwhite;
+  font-size: 13px;
+}
+
+a.nav-item {
+  background-color: ghostwhite;
+}
+
+#page-map .leaflet-container .leaflet-control a {
+  color: #0078a8;
+}
+
+.nav-tabs .nav-link {
+  border-radius: 0;
+  width: 50%;
+  background-color: transparent;
+  color: ghostwhite;
+}
 
 #page-map .new-post {
   position: absolute;

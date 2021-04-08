@@ -1,13 +1,36 @@
+#header {
+  z-index: 100;
+  width: 100%;
+  position: fixed;
+}
+
 .login {
   width: 75.5px;
   height: 38px;
   padding: 6px, 12px;
   margin-left: 8px;
   background: var(--primary-color);
-  box-shadow: 17px 27px 41px rgba(23, 142, 166, 0.16);
+  box-shadow: 17px 27px 41px rgba(255, 255, 255, 0.719);
   border-radius: 0.25rem;
 
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#header a.nav-link {
+  color: ghostwhite;
+}
+
+#header .btn {
+  background-color: transparent;
+  border: none;
+  color: ghostwhite;
+}
+
+#popover .btn {
+  background-color: transparent;
+  border: none;
+  color: var(--title-color);
+  font-size: 14px;
 }
