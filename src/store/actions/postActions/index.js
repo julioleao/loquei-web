@@ -2,22 +2,22 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import api from '../../../services/api';
 import { getCep } from '../../ducks/getCep';
-import { loaded, loading } from '../../ducks/loader';
+import { cepFounded, cepFounding, loaded, loading } from '../../ducks/loader';
 import { addPost, addPosts } from '../../ducks/post';
 import { getPost } from '../../ducks/postDetail';
 import { toastProps } from '../userActions';
 
 export const searchCep = (cep) => (dispatch) => {
 
-    dispatch(loading());
+    dispatch(cepFounding());
     axios.get(`https://brasilapi.com.br/api/cep/v1/${cep}`)
         .then((res) => {
             dispatch(getCep(res.data));
-            dispatch(loaded());
+            dispatch(cepFounded());
         })
         .catch((e) => {
             const { message } = e.response.data;
-            dispatch(loaded());
+            dispatch(cepFounded());
             toast.error(message, toastProps);
 
         });

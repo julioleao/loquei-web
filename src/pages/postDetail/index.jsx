@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import {
   Button,
+  Card,
   Col,
   Container,
   InputGroup,
@@ -46,140 +47,185 @@ const PostDetail = (props) => {
       {loading ? (
         <Loader />
       ) : (
-        <Container fluid='md'>
-          <Gallery pics={post} />
+        <div id='detail'>
+          <Container fluid='md'>
+            <Gallery pics={post} />
 
-          <ListGroup horizontal>
-            <ListGroup.Item>
-              <InputGroup className='mb-3'>
-                <InputGroup.Prepend>
-                  <InputGroup.Text>
-                    <FaBed />
-                  </InputGroup.Text>
-                </InputGroup.Prepend>
-                <InputGroup.Append>
-                  <InputGroup.Text>{post.bedroom}</InputGroup.Text>
-                </InputGroup.Append>
-              </InputGroup>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <InputGroup className='mb-3'>
-                <InputGroup.Prepend>
-                  <InputGroup.Text>
-                    <FaBath />
-                  </InputGroup.Text>
-                </InputGroup.Prepend>
-                <InputGroup.Append>
-                  <InputGroup.Text>{post.bathroom}</InputGroup.Text>
-                </InputGroup.Append>
-              </InputGroup>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <InputGroup className='mb-3'>
-                <InputGroup.Prepend>
-                  <InputGroup.Text>
-                    <FaCar />
-                  </InputGroup.Text>
-                </InputGroup.Prepend>
-                <InputGroup.Append>
-                  <InputGroup.Text>{post.garage}</InputGroup.Text>
-                </InputGroup.Append>
-              </InputGroup>
-            </ListGroup.Item>
-          </ListGroup>
+            <ListGroup horizontal>
+              <ListGroup.Item>
+                <InputGroup className='mb-3'>
+                  <InputGroup.Prepend>
+                    <InputGroup.Text>
+                      <FaBed />
+                    </InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <InputGroup.Append>
+                    <InputGroup.Text>{post.bedroom}</InputGroup.Text>
+                  </InputGroup.Append>
+                </InputGroup>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <InputGroup className='mb-3'>
+                  <InputGroup.Prepend>
+                    <InputGroup.Text>
+                      <FaBath />
+                    </InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <InputGroup.Append>
+                    <InputGroup.Text>{post.bathroom}</InputGroup.Text>
+                  </InputGroup.Append>
+                </InputGroup>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <InputGroup className='mb-3'>
+                  <InputGroup.Prepend>
+                    <InputGroup.Text>
+                      <FaCar />
+                    </InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <InputGroup.Append>
+                    <InputGroup.Text>{post.garage}</InputGroup.Text>
+                  </InputGroup.Append>
+                </InputGroup>
+              </ListGroup.Item>
+            </ListGroup>
 
-          <Row>
             <legend>
-              <Col xs>
-                <h2>{post.title}</h2>
-              </Col>
-              <Col md='auto'>
-                <h4>Aluguel R$</h4>
-                <h6>Condomínio R$</h6>
-                <h6>Total R$</h6>
-              </Col>
-              <Col md='auto'>
-                <h4>{post.price},00</h4>
-                <h6>{post.condo},00</h6>
-                <h6>{post.price + post.condo},00</h6>
-              </Col>
+              <h2>{post.title}</h2>
             </legend>
-          </Row>
 
-          <div style={{ marginBottom: '40px' }}>
-            <Row>{post.description}</Row>
-          </div>
+            <div style={{ marginBottom: '40px' }}>
+              <Row>
+                <Col md='8'>{post.description}</Col>
+                <Col md='4'>
+                  <Card style={{ width: '18rem' }}>
+                    <Card.Header>
+                      <Row>
+                        <Col>
+                          <strong>TOTAL</strong>
+                        </Col>
+                        <Col>
+                          <strong>R$ {post.price + post.condo},00</strong>
+                        </Col>
+                      </Row>
+                    </Card.Header>
+                    <ListGroup variant='flush'>
+                      <ListGroup.Item>
+                        <Row>
+                          <Col>Aluguel</Col>
+                          <Col>R$ {post.price},00</Col>
+                        </Row>
+                      </ListGroup.Item>
+                      <ListGroup.Item>
+                        <Row>
+                          <Col>Condomínio</Col>
+                          <Col>R$ {post.condo},00</Col>
+                        </Row>
+                      </ListGroup.Item>
+                      <ListGroup.Item>
+                        <Row>
+                          <Col>IPTU</Col>
+                          <Col>R$ 0,00</Col>
+                        </Row>
+                      </ListGroup.Item>
+                    </ListGroup>
+                  </Card>
+                </Col>
+              </Row>
+            </div>
 
-          <MapContainer
-            center={[post.mapLocation.lat, post.mapLocation.lon]}
-            zoom={14}
-            scrollWheelZoom={true}
-          >
-            <TileLayer
-              attribution={tileTheme.attribution}
-              url={tileTheme.url}
-            />
-            <Marker
-              position={[post.mapLocation.lat, post.mapLocation.lon]}
-              icon={mapIcon}
+            <MapContainer
+              center={[post.mapLocation.lat, post.mapLocation.lon]}
+              zoom={14}
+              scrollWheelZoom={true}
             >
-              <Popup>
-                <Button
-                  className='google-maps-btn'
-                  onClick={() => window.open(googleMaps, '_blank')}
-                >
-                  <FaMapMarkedAlt size={20} />
-                  Ver no Google Maps
-                </Button>
-              </Popup>
-            </Marker>
-          </MapContainer>
+              <TileLayer
+                attribution={tileTheme.attribution}
+                url={tileTheme.url}
+              />
+              <Marker
+                position={[post.mapLocation.lat, post.mapLocation.lon]}
+                icon={mapIcon}
+              >
+                <Popup>
+                  <Button
+                    className='google-maps-btn'
+                    onClick={() => window.open(googleMaps, '_blank')}
+                  >
+                    <FaMapMarkedAlt size={20} />
+                    Ver no Google Maps
+                  </Button>
+                </Popup>
+              </Marker>
+            </MapContainer>
 
-          <ListGroup horizontal>
-            <ListGroup.Item>Rua: {post.address.street}</ListGroup.Item>
-            <ListGroup.Item>Bairro: {post.address.neighborhood}</ListGroup.Item>
-            <ListGroup.Item>
-              Cidade: {post.address.city} - {post.address.state}
-            </ListGroup.Item>
-          </ListGroup>
-
-          <Row>
-            <legend>
-              <Col xs>
-                <h2>Contato</h2>
+            <Row>
+              <Col>
+                <Row>
+                  <strong>Logradouro</strong>
+                </Row>
+                <Row>
+                  <p>{post.address.street}</p>
+                </Row>
               </Col>
-              <Col md='auto'>
-                <h5>{post.contact.name}</h5>
+              <Col>
+                <Row>
+                  <strong>Bairro</strong>
+                </Row>
+                <Row>
+                  <p>{post.address.neighborhood}</p>
+                </Row>
               </Col>
-            </legend>
-          </Row>
-
-          <div id='contact-button'>
-            <Row style={{ justifyContent: 'center' }}>
-              <Col md='auto'>
-                <Button
-                  type='button'
-                  className='wapp-button'
-                  onClick={() => window.open(wappLink, '_blank')}
-                >
-                  <FaWhatsapp size={25} color='#FFF' /> WhatsApp
-                </Button>
-              </Col>
-
-              <Col md='auto'>
-                <Button
-                  type='button'
-                  className='email-button'
-                  onClick={() =>
-                    (window.location.href = `mailto:${post.contact.email}`)
-                  }
-                >
-                  <FaEnvelope size={25} color='#FFF' /> E-mail
-                </Button>
+              <Col>
+                <Row>
+                  <strong>Cidade</strong>
+                </Row>
+                <Row>
+                  <p>
+                    {post.address.city} - {post.address.state}
+                  </p>
+                </Row>
               </Col>
             </Row>
-          </div>
-        </Container>
+
+            <Row>
+              <legend>
+                <Col xs>
+                  <h2>Contato</h2>
+                </Col>
+                <Col md='auto'>
+                  <h5>{post.contact.name}</h5>
+                </Col>
+              </legend>
+            </Row>
+
+            <div id='contact-button'>
+              <Row style={{ justifyContent: 'center' }}>
+                <Col md='auto'>
+                  <Button
+                    type='button'
+                    className='wapp-button'
+                    onClick={() => window.open(wappLink, '_blank')}
+                  >
+                    <FaWhatsapp size={25} color='#FFF' /> WhatsApp
+                  </Button>
+                </Col>
+
+                <Col md='auto'>
+                  <Button
+                    type='button'
+                    className='email-button'
+                    onClick={() =>
+                      (window.location.href = `mailto:${post.contact.email}`)
+                    }
+                  >
+                    <FaEnvelope size={25} color='#FFF' /> E-mail
+                  </Button>
+                </Col>
+              </Row>
+            </div>
+          </Container>
+        </div>
       )}
     </div>
   );

@@ -48,6 +48,7 @@ import { toast } from 'react-toastify';
 const NewPost = () => {
   const postLocation = useSelector((state) => state.cep.postLocation);
   const loading = useSelector((state) => state.loading.loading);
+  const loadCep = useSelector((state) => state.loading.loadCep);
   const userId = useSelector((state) => state.auth);
   const [form, setForm] = useState(model);
   const [images, setImages] = useState([]);
@@ -362,7 +363,7 @@ const NewPost = () => {
             <h4>Dados do imóvel</h4>
           </legend>
 
-          {loading ? (
+          {loadCep ? (
             <Loader />
           ) : (
             <div>

@@ -9,8 +9,9 @@
   background-color: var(--secondary-color);
 }
 
-.sidebar a.nav-link {
+.sidebar p {
   color: ghostwhite;
+  font-size: 14px;
 }
 
 #sidebar-wrapper .sidebar-container {
@@ -18,9 +19,32 @@
   width: 50%;
   height: 50%;
   min-width: 95%;
-  min-height: 92%;
+  min-height: 95%;
   border-radius: 10px;
 
   padding-top: 20px;
   margin: 2%;
+}
+
+.sidebar label {
+  color: ghostwhite;
+}
+
+.sidebar .sidebar-container {
+  padding: 20px;
+}
+
+.sidebar .col-md-7 {
+  color: ghostwhite;
+}
+
+@media (max-width: 800px) {
+  #sidebar-wrapper {
+    display: none;
+  }
+
+  #page-content-wrapper {
+    flex: 1;
+    max-width: 100%;
+  }
 }

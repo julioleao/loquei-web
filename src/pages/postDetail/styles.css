@@ -41,3 +41,8 @@
 .leaflet-container {
   z-index: 0;
 }
+
+#detail .row {
+  justify-content: center;
+  align-items: center;
+}
