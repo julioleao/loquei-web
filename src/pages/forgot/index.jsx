@@ -1,13 +1,21 @@
+import axios from 'axios';
 import React, { useState } from 'react';
+import { Button, Form } from 'react-bootstrap';
 
 import './styles.css';
 
 const Forgot = () => {
   const [form, setForm] = useState({
-    token: '',
+    email: '',
   });
-  function submitForm(e) {
+  async function submitForm(e) {
     e.preventDefault();
+    console.log(form.email);
+
+    return await axios
+      .post('/forgotPassword', form)
+      .then((res) => console.log(res.data))
+      .catch((e) => console.log(e));
 
     //const { email, password } = form;
 
@@ -24,31 +32,22 @@ const Forgot = () => {
 
   return (
     <div id='page-cadastrar-imovel'>
-      <form onSubmit={submitForm}>
-        <fieldset>
-          <legend>
-            <h2>Esqueci a senha</h2>
-          </legend>
+      <Form onSubmit={submitForm}>
+        <Form.Group>
+          <Form.Label>E-mail</Form.Label>
+          <Form.Control
+            type='email'
+            name='email'
+            autoComplete='email'
+            onChange={handleInputChange}
+            value={form.email}
+          />
+        </Form.Group>
 
-          <div className='field'>
-            <label htmlFor='token'>Token</label>
-            <input
-              type='text'
-              name='token'
-              onChange={handleInputChange}
-              value={form.token}
-            />
-          </div>
-        </fieldset>
-        <div
-          className='button-group'
-          style={{
-            alignSelf: 'center',
-          }}
-        >
-          <button type='submit'>Resetar senha</button>
+        <div className='button-group'>
+          <Button type='submit'>Resetar senha</Button>
         </div>
-      </form>
+      </Form>
     </div>
   );
 };
