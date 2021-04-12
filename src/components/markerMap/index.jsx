@@ -19,6 +19,7 @@ const MarkerMap = (props) => {
   const {
     _id,
     pictures,
+    thumbnail,
     bedroom,
     bathroom,
     garage,
@@ -37,7 +38,7 @@ const MarkerMap = (props) => {
             <Card.Header className='text-center'>
               Aluguel: R$ {price}
             </Card.Header>
-            <Card.Img variant='top' src={pictures[0]} />
+            <Card.Img variant='top' src={thumbnail} />
             <Card.Header
               style={{ justifyContent: 'space-between', display: 'flex' }}
             >

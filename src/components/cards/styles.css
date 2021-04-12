@@ -2,6 +2,11 @@
   justify-content: center;
 }
 
+#cards .card {
+  width: 18rem;
+  margin: 20px;
+}
+
 #cards .card:hover {
   transform: scale(1.05);
   box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.5);
@@ -11,4 +16,10 @@
   -o-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
   cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  #cards .card {
+    width: auto;
+  }
 }

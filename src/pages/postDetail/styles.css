@@ -46,3 +46,19 @@
   justify-content: center;
   align-items: center;
 }
+
+@media (max-width: 800px) {
+  #contact-button .col-md-auto {
+    width: auto;
+  }
+
+  #detail .container-md {
+    padding-block: 75px;
+    padding-inline: 5px;
+  }
+
+  #contact-button .email-button,
+  #contact-button .wapp-button {
+    width: auto;
+  }
+}

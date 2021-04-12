@@ -27,3 +27,18 @@
 input[type='file'] {
   display: none;
 }
+
+@media (max-width: 600px) {
+  #new-post .container-md {
+    padding-inline: 5px;
+    padding-block: 75px;
+  }
+
+  #new-post .form-row {
+    display: block;
+  }
+
+  #new-post .form-group.col {
+    width: 100%;
+  }
+}

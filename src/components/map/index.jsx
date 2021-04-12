@@ -2,6 +2,7 @@ import React from 'react';
 import { FiPlus } from 'react-icons/fi';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import { Link } from 'react-router-dom';
+import Loader from '../loader';
 
 import MarkerMap from '../markerMap';
 
@@ -13,6 +14,7 @@ export const tileTheme = {
 
 const Map = (props) => {
   const { post } = props;
+  if (!post || post.length <= 0) return <Loader />;
   return (
     <div style={{ width: '100%', height: '87.5vh' }}>
       <MapContainer

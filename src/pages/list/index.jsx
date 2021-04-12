@@ -76,8 +76,6 @@ const List = () => {
     setItem(filteredPosts);
   }, [filter]);
 
-  if (!posts || posts.length <= 0) return <Loader />;
-
   return (
     <div id='page-map'>
       <Container fluid style={{ padding: '0' }}>

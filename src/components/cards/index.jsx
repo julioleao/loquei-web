@@ -7,12 +7,14 @@ import moment from 'moment';
 import './styles.css';
 import { postDetail } from '../../store/actions/postActions';
 import { useDispatch } from 'react-redux';
+import Loader from '../loader';
 
 const Cards = (props) => {
   const {
     _id,
     pictures,
     updatedAt,
+    thumbnail,
     bedroom,
     bathroom,
     garage,
@@ -30,11 +32,12 @@ const Cards = (props) => {
     let path = `/detail/${_id}`;
     history.push(path);
   };
+
   return (
     <div id='cards'>
-      <Card style={{ width: '18rem', margin: '20px' }} onClick={RouteChange}>
+      <Card onClick={RouteChange}>
         <Card.Header className='text-center'>R$ {price}</Card.Header>
-        <Card.Img variant='top' src={pictures[0]} style={{ height: '170px' }} />
+        <Card.Img variant='top' src={thumbnail} style={{ height: '170px' }} />
         <Card.Header
           style={{ justifyContent: 'space-between', display: 'flex' }}
         >

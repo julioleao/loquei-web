@@ -8,6 +8,7 @@ import {
   Form,
   FormControl,
   InputGroup,
+  Spinner,
 } from 'react-bootstrap';
 import {
   FaBath,
@@ -16,6 +17,7 @@ import {
   FaCar,
   FaDollarSign,
   FaEnvelope,
+  FaFileInvoiceDollar,
   FaWhatsapp,
 } from 'react-icons/fa';
 import {
@@ -141,6 +143,7 @@ const NewPost = () => {
       description,
       price,
       condo,
+      iptu,
       bedroom,
       bathroom,
       garage,
@@ -153,9 +156,11 @@ const NewPost = () => {
       description,
       price,
       condo,
+      iptu,
       bedroom,
       bathroom,
       garage,
+      thumbnail: images[0],
       pictures: images,
       mapLocation: {
         lat,
@@ -178,7 +183,7 @@ const NewPost = () => {
   };
 
   return (
-    <div>
+    <div id='new-post'>
       <Container fluid='md'>
         <Form onSubmit={submitForm}>
           <h1>Publique seu imóvel</h1>
@@ -248,6 +253,27 @@ const NewPost = () => {
                   autoComplete='transaction-amount'
                   onChange={onChangeForm}
                   value={form.condo}
+                />
+                <InputGroup.Append>
+                  <InputGroup.Text>,00</InputGroup.Text>
+                </InputGroup.Append>
+              </InputGroup>
+            </Form.Group>
+            <Form.Group as={Col}>
+              <Form.Label>IPTU</Form.Label>
+              <span id='formSpan'>(Opcional)</span>
+              <InputGroup className='mb-2'>
+                <InputGroup.Prepend>
+                  <InputGroup.Text>
+                    <FaFileInvoiceDollar />
+                  </InputGroup.Text>
+                </InputGroup.Prepend>
+                <Form.Control
+                  type='number'
+                  name='iptu'
+                  autoComplete='transaction-amount'
+                  onChange={onChangeForm}
+                  value={form.iptu}
                 />
                 <InputGroup.Append>
                   <InputGroup.Text>,00</InputGroup.Text>
@@ -519,7 +545,15 @@ const NewPost = () => {
 
           <div className='button-group'>
             {loading ? (
-              <Button disabled>Publicar</Button>
+              <Button variant='primary' disabled>
+                <Spinner
+                  as='span'
+                  animation='border'
+                  size='sm'
+                  role='status'
+                  aria-hidden='true'
+                />
+              </Button>
             ) : (
               <Button type='submit'>Publicar</Button>
             )}

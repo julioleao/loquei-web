@@ -67,6 +67,7 @@ export const model = {
     description: '',
     price: '',
     condo: '',
+    iptu: '',
     bedroom: '',
     bathroom: '',
     garage: '',
