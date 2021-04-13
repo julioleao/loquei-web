@@ -6,6 +6,10 @@
   border: 0;
 }
 
+#detail .card {
+  width: 18rem;
+}
+
 #contact-button .wapp-button {
   background-color: #25d366;
   width: 22vw;
@@ -47,9 +51,9 @@
   align-items: center;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 700px) {
   #contact-button .col-md-auto {
-    width: auto;
+    width: 100%;
   }
 
   #detail .container-md {
@@ -57,8 +61,16 @@
     padding-inline: 5px;
   }
 
+  #detail .list-group-item {
+    padding: 0.6rem;
+  }
+
+  #detail .card {
+    width: auto;
+  }
+
   #contact-button .email-button,
   #contact-button .wapp-button {
-    width: auto;
+    width: 100%;
   }
 }

@@ -1,10 +1,9 @@
 .container-md {
-  margin: 0 auto;
+  margin: 90px auto;
   padding: 2%;
   max-width: 1100px;
   background: #fff;
   border-radius: 8px;
-  margin-block: 140px;
 
   display: flex;
   flex-direction: column;
@@ -115,10 +114,6 @@ div .button-group {
 }
 
 @media (max-width: 700px) {
-  .container-md {
-    padding-inline: 10px;
-  }
-
   .btn-primary {
     width: 100%;
   }

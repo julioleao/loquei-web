@@ -99,7 +99,7 @@ const PostDetail = (props) => {
                 <Row>
                   <Col md='7'>{post.description}</Col>
                   <Col md='5'>
-                    <Card style={{ width: '18rem' }}>
+                    <Card>
                       <Card.Header>
                         <Row>
                           <Col>

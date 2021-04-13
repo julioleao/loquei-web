@@ -38,6 +38,14 @@ input[type='file'] {
     display: block;
   }
 
+  #new-post h1 {
+    font-size: 30px;
+  }
+
+  #new-post h4 {
+    font-size: 20px;
+  }
+
   #new-post .form-group.col {
     width: 100%;
   }

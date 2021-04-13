@@ -185,7 +185,7 @@ const NewPost = () => {
   return (
     <div id='new-post'>
       <Container fluid='md'>
-        <Form onSubmit={submitForm} novalidated>
+        <Form onSubmit={submitForm} validated>
           <h1>Publique seu imóvel</h1>
 
           <legend>
