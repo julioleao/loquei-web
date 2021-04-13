@@ -1,14 +1,5 @@
 import React, { useEffect } from 'react';
-import {
-  Tabs,
-  Tab,
-  Card,
-  Container,
-  Row,
-  Col,
-  Form,
-  Nav,
-} from 'react-bootstrap';
+import { Tabs, Tab, Container, Row, Col, Form, Nav } from 'react-bootstrap';
 import 'moment/locale/pt-br';
 
 import Map from '../../components/map';
@@ -18,15 +9,12 @@ import '../../styles/globalStyles.css';
 import './styles.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { listPost } from '../../store/actions/postActions';
-import Loader from '../../components/loader';
-import Sidebar from '../../components/sidebar';
 import { useState } from 'react';
 import { qtdBathroom, qtdBedroom, qtdGarage } from '../../utils/consts';
 
 const List = () => {
   const posts = useSelector((state) => state.post);
   const [item, setItem] = useState(posts);
-  const loading = useSelector((state) => state.loading.loading);
   const dispatch = useDispatch();
   const [filter, setFilter] = useState({
     price: 0,
@@ -67,7 +55,7 @@ const List = () => {
       );
     }
 
-    if (filter.garage != '') {
+    if (filter.garage !== '') {
       filteredPosts = filteredPosts.filter(
         (item) => item.garage >= filter.garage
       );

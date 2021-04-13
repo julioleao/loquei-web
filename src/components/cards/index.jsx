@@ -5,14 +5,10 @@ import { useHistory } from 'react-router-dom';
 import moment from 'moment';
 
 import './styles.css';
-import { postDetail } from '../../store/actions/postActions';
-import { useDispatch } from 'react-redux';
-import Loader from '../loader';
 
 const Cards = (props) => {
   const {
     _id,
-    pictures,
     updatedAt,
     thumbnail,
     bedroom,
@@ -23,7 +19,6 @@ const Cards = (props) => {
   } = props.card;
   const { city, neightborhood, state, street } = address;
 
-  const dispatch = useDispatch();
   const date = moment(updatedAt).format('LL');
 
   const history = useHistory();

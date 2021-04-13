@@ -3,6 +3,7 @@ import { createAction, createReducer } from '@reduxjs/toolkit';
 const INITIAL_STATE = {
     loading: false,
     loadCep: false,
+    success: true,
 };
 
 export const loading = createAction('LOADING');

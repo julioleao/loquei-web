@@ -1,9 +1,7 @@
 import React from 'react';
-import { Container, Spinner } from 'react-bootstrap';
 import { FiPlus } from 'react-icons/fi';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import { Link } from 'react-router-dom';
-import Loader from '../loader';
 
 import MarkerMap from '../markerMap';
 

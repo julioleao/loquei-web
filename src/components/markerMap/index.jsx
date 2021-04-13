@@ -1,5 +1,4 @@
 import React from 'react';
-import { FiArrowRight } from 'react-icons/fi';
 import { Popup, Marker } from 'react-leaflet';
 import { Link } from 'react-router-dom';
 import Leaflet from 'leaflet';
@@ -18,7 +17,6 @@ export const mapIcon = Leaflet.icon({
 const MarkerMap = (props) => {
   const {
     _id,
-    pictures,
     thumbnail,
     bedroom,
     bathroom,

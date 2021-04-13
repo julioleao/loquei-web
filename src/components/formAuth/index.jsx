@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Col, Container, Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { authLogin, authRegister } from '../../store/actions/userActions';
 
 import './styles.css';
@@ -43,12 +44,13 @@ const FormAuth = () => {
             <h2>Novo usuário</h2>
           </legend>
 
-          <Form onSubmit={submitRegisterForm}>
+          <Form onSubmit={submitRegisterForm} validated>
             <Form.Group>
               <Form.Label>Nome</Form.Label>
               <Form.Control
                 type='text'
                 name='name'
+                required
                 autoComplete='name'
                 onChange={handleInputChange}
                 value={registerForm.name}
@@ -61,6 +63,7 @@ const FormAuth = () => {
                 type='email'
                 name='email'
                 autoComplete='email'
+                required
                 onChange={handleInputChange}
                 value={registerForm.email}
               />
@@ -74,6 +77,8 @@ const FormAuth = () => {
                   name='password'
                   autoComplete='new-password'
                   onChange={handleInputChange}
+                  required
+                  minLength={6}
                   value={registerForm.password}
                 />
               </Form.Group>
@@ -83,6 +88,8 @@ const FormAuth = () => {
                   type='password'
                   name='confirmPassword'
                   autoComplete='new-password'
+                  required
+                  minLength={6}
                   onChange={handleInputChange}
                   value={registerForm.confirmPassword}
                 />
@@ -103,13 +110,14 @@ const FormAuth = () => {
             <h2>Login</h2>
           </legend>
 
-          <Form onSubmit={submitLoginForm}>
+          <Form onSubmit={submitLoginForm} validated>
             <Form.Group>
               <Form.Label>E-mail</Form.Label>
               <Form.Control
                 type='email'
                 name='email'
                 autoComplete='email'
+                required
                 onChange={handleInputChange}
                 value={loginForm.email}
               />
@@ -121,6 +129,8 @@ const FormAuth = () => {
                 type='password'
                 name='password'
                 autoComplete='current-password'
+                required
+                minLength={6}
                 onChange={handleInputChange}
                 value={loginForm.password}
               />
@@ -128,9 +138,13 @@ const FormAuth = () => {
 
             <div className='button-group'>
               <Button type='submit'>Entrar</Button>
-              <a href='/forgot' style={{ alignSelf: 'center', paddingTop: 20 }}>
+              <Link
+                to='/forgot'
+                style={{ alignSelf: 'center', paddingTop: 20 }}
+              >
                 Não lembro a senha
-              </a>
+              </Link>
+
               <button id='link' onClick={() => setIsNewUser(true)}>
                 Registrar-se
               </button>

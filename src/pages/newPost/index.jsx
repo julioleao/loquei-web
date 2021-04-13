@@ -185,7 +185,7 @@ const NewPost = () => {
   return (
     <div id='new-post'>
       <Container fluid='md'>
-        <Form onSubmit={submitForm}>
+        <Form onSubmit={submitForm} novalidated>
           <h1>Publique seu imóvel</h1>
 
           <legend>
@@ -199,6 +199,8 @@ const NewPost = () => {
               type='text'
               name='title'
               autoComplete='name'
+              required
+              minLength={10}
               onChange={onChangeForm}
               value={form.title}
             />
@@ -211,6 +213,8 @@ const NewPost = () => {
               as='textarea'
               type='hidden'
               name='description'
+              required
+              minLength={100}
               onChange={onChangeForm}
               value={form.description}
             />
@@ -229,6 +233,7 @@ const NewPost = () => {
                 <Form.Control
                   type='number'
                   name='price'
+                  required
                   autoComplete='transaction-amount'
                   onChange={onChangeForm}
                   value={form.price}
@@ -296,6 +301,7 @@ const NewPost = () => {
                   as='select'
                   type='numeric'
                   name='bedroom'
+                  required
                   autoComplete='transaction-amount'
                   onChange={onChangeForm}
                   value={form.bedroom}
@@ -322,6 +328,7 @@ const NewPost = () => {
                   as='select'
                   type='numeric'
                   name='bathroom'
+                  required
                   autoComplete='number'
                   onChange={onChangeForm}
                   value={form.bathroom}
@@ -348,6 +355,7 @@ const NewPost = () => {
                   as='select'
                   type='numeric'
                   name='garage'
+                  required
                   autoComplete='number'
                   onChange={onChangeForm}
                   value={form.garage}
@@ -378,6 +386,9 @@ const NewPost = () => {
                   id='image[]'
                   type='file'
                   multiple
+                  required
+                  minLength={1}
+                  maxLength={9}
                   accept='image/*'
                   onChange={onChangeFile}
                 />
@@ -400,6 +411,7 @@ const NewPost = () => {
                   <Form.Control
                     type='text'
                     name='cep'
+                    required
                     autoComplete='postal-code'
                     onChange={onChangeFormAddress}
                     value={formAddress.cep}
@@ -411,6 +423,7 @@ const NewPost = () => {
                   <Form.Control
                     type='text'
                     name='street'
+                    required
                     autoComplete='address-line1'
                     onChange={onChangeFormAddress}
                     value={formAddress.street}
@@ -425,6 +438,7 @@ const NewPost = () => {
                   <Form.Control
                     type='numeric'
                     name='neighborhood'
+                    required
                     autoComplete='address-level3'
                     onChange={onChangeFormAddress}
                     value={formAddress.neighborhood}
@@ -437,6 +451,7 @@ const NewPost = () => {
                     as='select'
                     type='text'
                     name='state'
+                    required
                     autoComplete='address-level1'
                     onChange={onChangeFormAddress}
                     value={formAddress.state}
@@ -456,6 +471,7 @@ const NewPost = () => {
                   <Form.Control
                     type='text'
                     name='city'
+                    required
                     autoComplete='address-level2'
                     onChange={onChangeFormAddress}
                     value={formAddress.city}
@@ -498,6 +514,7 @@ const NewPost = () => {
               type='text'
               name='name'
               autoComplete='name'
+              required
               onChange={onChangeFormContact}
               value={formContact.name}
             />
@@ -516,6 +533,7 @@ const NewPost = () => {
                 <Form.Control
                   type='email'
                   name='email'
+                  required
                   autoComplete='email'
                   onChange={onChangeFormContact}
                   value={formContact.email}
@@ -535,6 +553,7 @@ const NewPost = () => {
                 <Form.Control
                   type='tel'
                   name='phone'
+                  required
                   autoComplete='tel-national'
                   onChange={onChangeFormContact}
                   value={formContact.phone}

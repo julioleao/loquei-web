@@ -2,9 +2,7 @@ import React from 'react';
 import {
   Navbar,
   Nav,
-  NavDropdown,
   Form,
-  FormControl,
   Button,
   OverlayTrigger,
   Image,
@@ -12,7 +10,6 @@ import {
   Col,
   Row,
 } from 'react-bootstrap';
-import { FiLogIn, FiLogOut } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
