@@ -163,6 +163,10 @@ a.nav-item {
   color: ghostwhite;
 }
 
+#page-content-wrapper {
+  padding: 0px 0px;
+}
+
 @media (max-width: 800px) {
   #sidebar-wrapper {
     display: none;

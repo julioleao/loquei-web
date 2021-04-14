@@ -159,11 +159,7 @@ const List = () => {
               </div>
             </Nav>
           </Col>
-          <Col
-            xs={10}
-            style={{ paddingInline: '0' }}
-            id={'page-content-wrapper'}
-          >
+          <Col xs={10} id='page-content-wrapper'>
             <Tabs defaultActiveKey='map'>
               <Tab eventKey='map' title='Mapa'>
                 <Map post={item} />

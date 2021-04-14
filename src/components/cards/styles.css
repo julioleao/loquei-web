@@ -42,8 +42,12 @@
   background-color: #db1f48;
 }
 
-@media (max-width: 600px) {
-  #cards .card {
-    width: auto;
+@media (max-width: 800px) {
+  #cards {
+    width: 100%;
+  }
+
+  .justify-content-md-center {
+    justify-content: center !important;
   }
 }
