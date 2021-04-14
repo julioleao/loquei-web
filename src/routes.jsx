@@ -32,7 +32,6 @@ const Routes = () => {
   return (
     <Switch>
       <PrivateRoute component={NewPost} path='/create' />
-
       <PrivateRoute component={Profile} path='/profile' />
 
       <Route component={Home} path='/' exact />

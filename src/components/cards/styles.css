@@ -18,6 +18,30 @@
   cursor: pointer;
 }
 
+#edit-button {
+  background-color: #01959acb;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#edit-button:hover {
+  background-color: #01959a;
+}
+
+#delete-button {
+  background-color: #db1f48b4;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#delete-button:hover {
+  background-color: #db1f48;
+}
+
 @media (max-width: 600px) {
   #cards .card {
     width: auto;

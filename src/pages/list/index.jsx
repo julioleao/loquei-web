@@ -172,7 +172,7 @@ const List = () => {
                 <Container fluid>
                   <Row className='justify-content-md-center'>
                     {item.map((post, index) => (
-                      <Cards key={index} card={post} />
+                      <Cards key={index} card={post} edit={false} />
                     ))}
                   </Row>
                 </Container>
