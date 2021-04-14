@@ -105,7 +105,7 @@ const Cards = (props) => {
               <small className='text-muted'>Atualizado: {date}</small>
             </Card.Footer>
           </Card>
-          <ShowModal show={show} onHide={() => setShow(false)} />
+          <ShowModal show={show} onHide={() => setShow(false)} postId={_id} />
         </div>
       )}
     </div>

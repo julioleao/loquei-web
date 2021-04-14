@@ -4,10 +4,6 @@ const api = axios.create({
   baseURL: `${process.env.REACT_APP_API_URL}/api`,
 });
 
-api.defaults.headers = {
-  'Cache-Control': 'no-cache',
-  'Pragma': 'no-cache',
-  'Expires': '0',
-};
+api.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
 
 export default api;

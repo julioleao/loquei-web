@@ -68,11 +68,7 @@ export const resetPassword = (user) => (dispatch) => {
 export const postsByUser = () => (dispatch) => {
     const id = { userId: localStorage.getItem('userId') };
     dispatch(loading());
-    api.post('/profile/posts', id, {
-        headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-    }).then((res) => {
+    api.post('/profile/posts', id).then((res) => {
         dispatch(profile(res.data));
         dispatch(loaded());
     }).catch((e) => {
@@ -80,6 +76,22 @@ export const postsByUser = () => (dispatch) => {
         e.response.data.errors.forEach((e) => toast.error(e, toastProps));
     });
 
+};
+
+export const detelePost = (postId) => (dispatch) => {
+    dispatch(loading());
+    api.delete('/profile/posts/delete', {
+        data: {
+            postId
+        }
+    }).then((res) => {
+        dispatch(postsByUser());
+        dispatch(loaded());
+        toast.success(res.data.message, toastProps);
+    }).catch((e) => {
+        dispatch(loaded());
+        e.response.data.errors.forEach((e) => toast.error(e, toastProps));
+    });
 };
 
 export const authRegister = (user) => (dispatch) => {

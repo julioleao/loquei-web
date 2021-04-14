@@ -56,14 +56,10 @@ export const postDetail = (id) => (dispatch) => {
 export const newPost = (post) => (dispatch) => {
     dispatch(loading());
     api
-        .post('/create', post, {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        })
+        .post('/create', post)
         .then((res) => {
             dispatch(addPost());
-            toast.success('Cadastro realizado com sucesso', toastProps);
+            toast.success(res.data.message, toastProps);
 
             setTimeout(() => {
                 window.location.pathname = '/list';
