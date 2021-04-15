@@ -13,41 +13,30 @@ import './styles.css';
 const Cards = (props) => {
   const [show, setShow] = useState(false);
   const [editForm, setEditForm] = useState(false);
-  const {
-    _id,
-    updatedAt,
-    thumbnail,
-    bedroom,
-    bathroom,
-    garage,
-    price,
-    address,
-  } = props.card;
-  const { edit } = props;
-  const { city, neightborhood, state, street } = address;
+  const data = props.card;
 
-  const date = moment(updatedAt).format('LL');
+  const date = moment(data.updatedAt).format('LL');
 
   const history = useHistory();
 
   const RouteChange = () => {
-    let path = `/detail/${_id}`;
+    let path = `/detail/${data._id}`;
     history.push(path);
   };
 
-  if (!props.card || props.card === 'undefined' || address === 'undefined') {
+  if (!data || data === 'undefined') {
     return;
   }
 
   return (
     <div>
-      {!edit ? (
+      {!props.edit ? (
         <div id='cards'>
           <Card onClick={RouteChange}>
-            <Card.Header className='text-center'>R$ {price}</Card.Header>
+            <Card.Header className='text-center'>R$ {data.price}</Card.Header>
             <Card.Img
               variant='top'
-              src={thumbnail}
+              src={data.thumbnail}
               style={{ height: '170px' }}
             />
 
@@ -55,22 +44,22 @@ const Cards = (props) => {
               style={{ justifyContent: 'space-between', display: 'flex' }}
             >
               <FaBed />
-              <small>{bedroom}</small>
+              <small>{data.bedroom}</small>
               <FaBath />
-              <small>{bathroom}</small>
+              <small>{data.bathroom}</small>
               <FaCar />
-              <small>{garage}</small>
+              <small>{data.garage}</small>
             </Card.Header>
 
             <Col style={{ alignItems: 'center' }}>
               <Row>
                 <small>
-                  {street}, {neightborhood}
+                  {data.address.street}, {data.address.neightborhood}
                 </small>
               </Row>
               <Row>
                 <small>
-                  {city} - {state}
+                  {data.address.city} - {data.address.state}
                 </small>
               </Row>
             </Col>
@@ -85,10 +74,10 @@ const Cards = (props) => {
       ) : (
         <div id='cards'>
           <Card>
-            <Card.Header className='text-center'>R$ {price}</Card.Header>
+            <Card.Header className='text-center'>R$ {data.price}</Card.Header>
             <Card.Img
               variant='top'
-              src={thumbnail}
+              src={data.thumbnail}
               style={{ height: '170px' }}
               onClick={RouteChange}
             />
@@ -108,7 +97,11 @@ const Cards = (props) => {
               <small className='text-muted'>Atualizado: {date}</small>
             </Card.Footer>
           </Card>
-          <ShowModal show={show} onHide={() => setShow(false)} postId={_id} />
+          <ShowModal
+            show={show}
+            onHide={() => setShow(false)}
+            postId={data._id}
+          />
           <Modal
             show={editForm}
             onHide={() => setEditForm(false)}

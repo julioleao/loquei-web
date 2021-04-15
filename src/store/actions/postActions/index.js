@@ -87,9 +87,9 @@ export const editPost = (post) => (dispatch) => {
             }
         })
         .then((res) => {
-            dispatch(addPost());
-            toast.success(res.data.message, toastProps);
             dispatch(postsByUser());
+            toast.success(res.data.message, toastProps);
+
             dispatch(loaded());
         })
         .catch((e) => {
