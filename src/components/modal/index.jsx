@@ -3,6 +3,8 @@ import { Button, Modal } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { detelePost } from '../../store/actions/userActions';
 
+import './styles.css';
+
 const ShowModal = (props) => {
   const dispatch = useDispatch();
   const postDelete = () => {

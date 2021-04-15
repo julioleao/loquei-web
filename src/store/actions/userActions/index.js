@@ -68,7 +68,11 @@ export const resetPassword = (user) => (dispatch) => {
 export const postsByUser = () => (dispatch) => {
     const id = { userId: localStorage.getItem('userId') };
     dispatch(loading());
-    api.post('/profile/posts', id).then((res) => {
+    api.post('/profile/posts', id, {
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    }).then((res) => {
         dispatch(profile(res.data));
         dispatch(loaded());
     }).catch((e) => {
@@ -83,7 +87,11 @@ export const detelePost = (postId) => (dispatch) => {
     api.delete('/profile/posts/delete', {
         data: {
             postId
+        },
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
+
     }).then((res) => {
         dispatch(postsByUser());
         dispatch(loaded());

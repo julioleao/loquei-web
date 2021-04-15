@@ -91,3 +91,32 @@ export const contact = {
     email: '',
     phone: '',
 };
+
+export const fullModel = {
+    title: '',
+    description: '',
+    price: '',
+    condo: 0,
+    iptu: 0,
+    bedroom: '',
+    bathroom: '',
+    garage: '',
+    pictures: [],
+    thumbnail: '',
+    mapLocation: {
+        lat: null,
+        lon: null,
+    },
+    address: {
+        cep: '',
+        city: '',
+        neighborhood: '',
+        state: '',
+        street: '',
+    },
+    contact: {
+        name: '',
+        email: '',
+        phone: '',
+    },
+};

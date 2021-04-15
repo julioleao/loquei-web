@@ -1,16 +1,18 @@
 import React from 'react';
-import { Button, Card, Col, Modal, Row } from 'react-bootstrap';
-import { FaBed, FaBath, FaCar, FaTrash } from 'react-icons/fa';
+import { Card, Col, Modal, Row } from 'react-bootstrap';
+import { FaBed, FaBath, FaCar } from 'react-icons/fa';
 import { useHistory } from 'react-router-dom';
-import moment from 'moment';
-
-import './styles.css';
 import { FiEdit, FiTrash2 } from 'react-icons/fi';
 import { useState } from 'react';
+import moment from 'moment';
+
 import ShowModal from '../modal';
+import NewForm from '../form';
+import './styles.css';
 
 const Cards = (props) => {
   const [show, setShow] = useState(false);
+  const [editForm, setEditForm] = useState(false);
   const {
     _id,
     updatedAt,
@@ -24,9 +26,6 @@ const Cards = (props) => {
   const { edit } = props;
   const { city, neightborhood, state, street } = address;
 
-  const handleClose = () => setShow(false);
-  const modalShow = () => setShow(true);
-
   const date = moment(updatedAt).format('LL');
 
   const history = useHistory();
@@ -35,6 +34,10 @@ const Cards = (props) => {
     let path = `/detail/${_id}`;
     history.push(path);
   };
+
+  if (!props.card || props.card === 'undefined' || address === 'undefined') {
+    return;
+  }
 
   return (
     <div>
@@ -91,7 +94,7 @@ const Cards = (props) => {
             />
 
             <Row>
-              <Col id='edit-button' onClick={() => console.log('Editou')}>
+              <Col id='edit-button' onClick={() => setEditForm(true)}>
                 <FiEdit />
               </Col>
               <Col id='delete-button' onClick={() => setShow(true)}>
@@ -106,6 +109,17 @@ const Cards = (props) => {
             </Card.Footer>
           </Card>
           <ShowModal show={show} onHide={() => setShow(false)} postId={_id} />
+          <Modal
+            show={editForm}
+            onHide={() => setEditForm(false)}
+            size='lg'
+            aria-labelledby='contained-modal-title-vcenter'
+            centered
+            id='modal_edit'
+          >
+            <Modal.Header id='modal-header-edit' closeButton></Modal.Header>
+            <NewForm edit={true} data={props.card} />
+          </Modal>
         </div>
       )}
     </div>

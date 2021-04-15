@@ -5,7 +5,7 @@ import { getCep } from '../../ducks/getCep';
 import { cepFounded, cepFounding, loaded, loading } from '../../ducks/loader';
 import { addPost, addPosts } from '../../ducks/post';
 import { getPost } from '../../ducks/postDetail';
-import { toastProps } from '../userActions';
+import { postsByUser, toastProps } from '../userActions';
 
 export const searchCep = (cep) => (dispatch) => {
 
@@ -56,7 +56,11 @@ export const postDetail = (id) => (dispatch) => {
 export const newPost = (post) => (dispatch) => {
     dispatch(loading());
     api
-        .post('/create', post)
+        .post('/create', post, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
         .then((res) => {
             dispatch(addPost());
             toast.success(res.data.message, toastProps);
@@ -66,6 +70,27 @@ export const newPost = (post) => (dispatch) => {
                 dispatch(loaded());
             }, [2000]);
 
+        })
+        .catch((e) => {
+            dispatch(loaded());
+            e.response.data.errors.forEach((e) => toast.error(e, toastProps));
+        });
+
+};
+
+export const editPost = (post) => (dispatch) => {
+    dispatch(loading());
+    api
+        .put('/edit', post, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+        .then((res) => {
+            dispatch(addPost());
+            toast.success(res.data.message, toastProps);
+            dispatch(postsByUser());
+            dispatch(loaded());
         })
         .catch((e) => {
             dispatch(loaded());
