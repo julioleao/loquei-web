@@ -62,7 +62,7 @@ function Header() {
     <Navbar expand='lg' id='header' bg='dark' variant='dark'>
       <Navbar.Brand>
         <Link to='/'>
-          <img src={logo} alt='Loquei' />
+          <img src={logo} alt='Loquei' width='150px' height='50px' />
         </Link>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -96,6 +96,7 @@ function Header() {
                   roundedCircle
                   src='https://upload.wikimedia.org/wikipedia/commons/2/24/Missing_avatar.svg'
                   style={{ width: '30px', height: '30px' }}
+                  alt='User'
                 />
                 <span className='ml-1'>{name}</span>
               </Button>

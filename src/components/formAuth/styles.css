@@ -41,6 +41,7 @@ select option,
   border: 0;
   font-size: 16px;
   color: #6c6c80;
+  -moz-appearance: none;
 }
 
 .leaflet-container {
