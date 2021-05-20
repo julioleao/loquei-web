@@ -37,7 +37,11 @@ export const authLogin = (user) => (dispatch) => {
 
 export const forgotPassword = (email) => (dispatch) => {
     dispatch(loading());
-    api.post('/forgotPassword', email)
+    api.post('/forgotPassword', email, {
+        headers: {
+            'Accept': 'application/json;'
+        }
+    })
         .then((res) => {
             toast.success(res.data.message, toastProps);
             dispatch(loaded());
